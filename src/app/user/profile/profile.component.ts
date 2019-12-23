@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { GlobalapiService } from 'src/app/services/globalapi.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private globalapiService: GlobalapiService,
+    private toastrService: ToastrService
     ) {
       this.profileForm = fb.group({
         fullname: ["", Validators.required],
@@ -73,13 +75,9 @@ export class ProfileComponent implements OnInit {
        await this.globalapiService.past_data_to_server(api_url,reqParams)
        .subscribe(
         response => {
-            console.log('check response....');
-            console.log(response);
-
             if(response['success']==1)
             {
-              
-
+              this.toastrService.success('User Profile Update Successfully','User Profile');
             }
         }, err => {
             

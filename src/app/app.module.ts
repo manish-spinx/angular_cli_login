@@ -11,6 +11,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './services/authGuard'; //auth guard
 import { GlobalapiService } from './services/globalapi.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  ToastrModule,
+  ToastNoAnimation,
+  ToastNoAnimationModule
+} from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +27,12 @@ import { GlobalapiService } from './services/globalapi.service';
     BrowserModule,
     AppRoutingModule,    
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     HttpClient,
