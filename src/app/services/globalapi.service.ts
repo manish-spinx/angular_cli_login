@@ -17,7 +17,6 @@ past_data_to_server(api_name, params_data)
             return resp;
         })
 
-}
-    
+}    
 
 }

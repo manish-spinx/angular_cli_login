@@ -5,8 +5,11 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-//auth guard
-import { AuthGuard } from './services/authGuard';
+
+
+//service
+import { AuthGuard } from './services/authGuard'; //auth guard
+import { GlobalapiService } from './services/globalapi.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { AuthGuard } from './services/authGuard';
   ],
   providers: [
     HttpClient,
-    AuthGuard
+    AuthGuard,
+    GlobalapiService
   ],
   bootstrap: [AppComponent]
 })

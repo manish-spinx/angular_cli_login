@@ -1,8 +1,6 @@
-
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
-//import { CommonService } from "./common.service";
 import { environment } from "../../environments/environment";
 
 interface OtherOptions {
@@ -27,7 +25,7 @@ export class CustomHttp {
         /*If token exist then pass token else call API without token */
         if (token) {
             this.httpOptions = {
-                headers: new HttpHeaders({ 'access_token': token })
+                headers: new HttpHeaders({ 'token': token })
             };
 
             if (otherOptions && otherOptions.responseType) 
