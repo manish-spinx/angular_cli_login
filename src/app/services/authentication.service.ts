@@ -27,7 +27,7 @@ export class AuthenticationService {
             //     headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
             // }
 
-            let api_url = 'http://localhost:3005/admin_api/login';
+           let api_url = 'http://localhost:3005/admin_api/login';
            //let api_url = 'https://projects.spinxweb.net/ncwm-spinx/api/admin/auth/login';
 
             //const myheader = new HttpHeaders().set('Content-Type', 'application/json;charset=UTF-8')

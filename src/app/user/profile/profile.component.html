@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link active" routerLink="/user/profile">User Profile</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+<br/>
+<br/>
+
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+            <div class="card-group">             
+              <div class="card p-12">                
+                <div class="card-body">
+                  
+                   <!-- <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()" #formDir="ngForm" novalidate>  -->
+                    
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="icon-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Full Name" >
+                        <!-- formControlName="email"  -->
+                        
+                      </div>
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-user"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="email" autocomplete="email" >
+                      <!-- formControlName="email"  -->
+                      
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-6">
+                        <button type="submit"  class="btn btn-primary px-4">Submit</button>
+                      </div>
+                    </div>
+                   <!-- </form> -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+

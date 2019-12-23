@@ -8,7 +8,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 //auth guard
 import { AuthGuard } from './services/authGuard';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +17,6 @@ import { AuthGuard } from './services/authGuard';
     BrowserModule,
     AppRoutingModule,    
     HttpClientModule,
-
   ],
   providers: [
     HttpClient,

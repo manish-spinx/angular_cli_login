@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,11 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  user_profile()
+  {
+    this.router.navigate(['/user/profile']);
   }
 
   logout()
