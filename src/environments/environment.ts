@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   loginUrl: 'auth/login',
-  base_url : 'https://projects.spinxweb.net/ncwm-spinx/api/admin/',  
+  base_url : 'https://projects.spinxweb.net/ncwm-spinx/api/admin/', 
+  apiUrl:'http://localhost:3005/', 
 };
 
 /*

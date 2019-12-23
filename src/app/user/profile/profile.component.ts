@@ -9,14 +9,36 @@ import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@ang
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  profileForm: FormGroup;
+  isSubmitted: boolean = false;
 
-  ngOnInit() {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    ) {
+      this.profileForm = fb.group({
+        fullname: ["", Validators.required],
+        email: ["", Validators.required],
+      });
+    }
+
+    public loading = false;
+
+  ngOnInit(){
+
+    
+    
   }
 
   user_profile()
   {
     this.router.navigate(['/user/profile']);
   }
+
+  profileFormSubmit()
+  {
+
+  }
+
 
 }

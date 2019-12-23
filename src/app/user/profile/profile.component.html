@@ -17,33 +17,37 @@
               <div class="card p-12">                
                 <div class="card-body">
                   
-                   <!-- <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()" #formDir="ngForm" novalidate>  -->
+                    <form [formGroup]="profileForm" (ngSubmit)="profileFormSubmit()">
                     
                     
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="icon-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Full Name" >
-                        <!-- formControlName="email"  -->
-                        
+                        <input type="text" class="form-control" placeholder="Full Name" formControlName="fullname">
                       </div>
+
+                      <div class="alert alert-danger" *ngIf="isSubmitted && profileForm.controls.fullname.errors">
+                        <div *ngIf="profileForm.hasError('required','fullname')">Please enter email.</div>
+                    </div>
 
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-user"></i></span>
                       </div>
-                      <input type="text" class="form-control" placeholder="email" autocomplete="email" >
-                      <!-- formControlName="email"  -->
-                      
+                      <input type="text" class="form-control" placeholder="email" autocomplete="email" formControlName="email">
                     </div>
                     
+                    <div class="alert alert-danger" *ngIf="isSubmitted && profileForm.controls.email.errors">
+                        <div *ngIf="profileForm.hasError('required','email')">Please enter email.</div>
+                    </div>
+
                     <div class="row">
                       <div class="col-6">
                         <button type="submit"  class="btn btn-primary px-4">Submit</button>
                       </div>
                     </div>
-                   <!-- </form> -->
+                    </form>
                 </div>
               </div>
 
