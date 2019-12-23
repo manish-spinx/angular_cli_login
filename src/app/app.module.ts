@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
-
-
 
 //service
 import { AuthGuard } from './services/authGuard'; //auth guard
 import { GlobalapiService } from './services/globalapi.service';
+import { AuthenticationService } from './services/authentication.service';
+
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -18,10 +18,17 @@ import {
   ToastNoAnimationModule
 } from 'ngx-toastr';
 
+// component
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './header/header.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +44,8 @@ import {
   providers: [
     HttpClient,
     AuthGuard,
-    GlobalapiService
+    GlobalapiService,
+    AuthenticationService,
   ],
   bootstrap: [AppComponent]
 })

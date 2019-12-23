@@ -3,11 +3,22 @@ import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { Observable } from 'rxjs/Observable';
 import axios from 'axios';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: HttpClient) { }
+    private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+    get isLoggedIn() {
+        return this.loggedIn.asObservable();
+      }
+
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        ) { }
 
     async login_old(data_new)
     {
@@ -45,9 +56,20 @@ export class AuthenticationService {
                     localStorage.setItem('id', user['data']['_id']);
                     localStorage.setItem('access_token', user['data']['access_token']);
                     localStorage.setItem('userData', JSON.stringify(user['data']));
+                    this.loggedIn.next(true);
+                    //this.router.navigate(['/']);
+
                 }
                 return user;
             });
     }
+
+    logout() {
+        this.loggedIn.next(false);
+        localStorage.removeItem('id');
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('userData');
+        this.router.navigate(['/login']);
+      }
     
 }

@@ -55,7 +55,9 @@ loginFormSubmit() {
       next => {
             if(next['status']==1)
             {
-               this.router.navigate(['/dashboard']);
+               //this.router.navigate(['/dashboard']);
+               window.location.href = '/dashboard';
+               return true;
             }
             else{
                alert('something validaiton issue !'); 

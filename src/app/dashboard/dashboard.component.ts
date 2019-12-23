@@ -11,14 +11,12 @@ export class DashboardComponent implements OnInit {
 
   loggedIn :boolean = false;
 
-  constructor( private router: Router,) { 
+  constructor( private router: Router) { 
     if(localStorage.getItem('access_token')!=null)
     {
-      console.log('ths app component calling..1');
       this.loggedIn = true;
     }
     else{
-      console.log('ths app component calling..2');
       this.loggedIn = false;
     }
   }

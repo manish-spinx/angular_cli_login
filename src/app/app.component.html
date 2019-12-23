@@ -1,1 +1,11 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="loggedIn">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink = "/user/profile">User Profile</a>
+        <a class="nav-item nav-link" (click)="onLogout()">Logout header {{isLoggedIn$}}</a>
+    </div>
+</nav>
+
+
+<!-- <app-header></app-header> -->
 <router-outlet></router-outlet>

@@ -5,18 +5,16 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 // service
-import { AuthenticationService } from '../services/authentication.service';
+//import { AuthenticationService } from '../services/authentication.service';
 
 // component list
 import { LoginComponent } from './login/login.component';
-import { LoginTestComponent } from './login-test/login-test.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
     LoginComponent, 
-    LoginTestComponent, 
     ForgetpasswordComponent, 
     ResetpasswordComponent
   ],
@@ -26,6 +24,6 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     ReactiveFormsModule,
     AuthRoutingModule
   ],
-  providers: [AuthenticationService],
+  providers: [],
 })
 export class AuthModule { }
