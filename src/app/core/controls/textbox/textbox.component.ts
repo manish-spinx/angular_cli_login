@@ -30,6 +30,8 @@ export class TextboxComponent implements OnInit {
 @ViewChild("control", { static: true }) control: ElementRef;
 
 ngAfterViewInit() {
+
+     console.log('calling....1111');
     // Adding placeholder
     if (this.placeholder != null)
       this.control.nativeElement.setAttribute(
