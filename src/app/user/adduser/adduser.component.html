@@ -1,1 +1,9 @@
-<p>adduser works!</p>
+<h1>Add New User</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+    <spinx-textbox id="Name" [(model)]="Name" label="Name" placeholder="Please Enter Name"></spinx-textbox>
+    <spinx-textbox id="emailAddress" [(model)]="emailAddress" label="Email address" placeholder="We'll never share your email with anyone else."></spinx-textbox>
+    </div>
+
+    <button class="btn btn-primary">Add User</button>
+</form>
