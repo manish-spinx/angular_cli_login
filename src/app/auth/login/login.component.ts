@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 //import { HttpClient, HttpHeaders,HttpRequest } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
+    private toastrService: ToastrService
     ) { }
   public loading = false;
 
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/forgetpassword']);
   }
 
-loginFormSubmit() {
+async loginFormSubmit() {
   this.isSubmitted = true;
     if (this.loginForm.valid) 
     {      
@@ -50,17 +52,19 @@ loginFormSubmit() {
           password: postData.password
       }
 
-      this.authenticationService.login(data)
+     await this.authenticationService.login(data)
       .subscribe(
-      next => {
+      async next => {
             if(next['status']==1)
             {
                //this.router.navigate(['/dashboard']);
+               await this.toastrService.success('Login Successfully !','Login');
                window.location.href = '/dashboard';
                return true;
             }
             else{
-               alert('something validaiton issue !'); 
+               //lert('something validaiton issue !'); 
+               
             }        
       },
       error => {

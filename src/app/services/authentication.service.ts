@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
-    private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    // private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    get isLoggedIn() {
-        return this.loggedIn.asObservable();
-      }
+    // get isLoggedIn() {
+    //     return this.loggedIn.asObservable();
+    //   }
 
     constructor(
         private http: HttpClient,
@@ -34,20 +34,9 @@ export class AuthenticationService {
     }
 
     login(post_data) {
-            // {
-            //     headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
-            // }
 
            let api_url = 'http://localhost:3005/admin_api/login';
            //let api_url = 'https://projects.spinxweb.net/ncwm-spinx/api/admin/auth/login';
-
-            //const myheader = new HttpHeaders().set('Content-Type', 'application/json;charset=UTF-8')
-
-            // let apiHeader = new HttpHeaders();
-            // let contentType = apiHeader.append('Content-Type', 'application/json;charset=UTF-8');
-            // let aControl = contentType.append('Access-Control-Allow-Origin', '*');
-            // let pace = aControl.append('pace-useragent', 'rest');
-            
 
         return this.http.post(api_url,post_data)
             .map(user => {
@@ -56,7 +45,7 @@ export class AuthenticationService {
                     localStorage.setItem('id', user['data']['_id']);
                     localStorage.setItem('access_token', user['data']['access_token']);
                     localStorage.setItem('userData', JSON.stringify(user['data']));
-                    this.loggedIn.next(true);
+                   // this.loggedIn.next(true);
                     //this.router.navigate(['/']);
 
                 }
@@ -64,12 +53,5 @@ export class AuthenticationService {
             });
     }
 
-    logout() {
-        this.loggedIn.next(false);
-        localStorage.removeItem('id');
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('userData');
-        this.router.navigate(['/login']);
-      }
     
 }
