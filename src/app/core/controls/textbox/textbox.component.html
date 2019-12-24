@@ -1,7 +1,7 @@
 <div class="form-group">
     <label [for]="id">{{ label }}</label>
     <input type="text" #control class="form-control" [id]="id" [name]="id" [(ngModel)]="model"
-      (ngModelChange)="modelChange.emit($event)" [placeholder]="placeholder" ngControl="model" />
+      (ngModelChange)="modelChange.emit($event)" [maxlength]="maxlength" [placeholder]="placeholder" ngControl="model" />
   
     <small class="text-danger" *ngIf="anyError()">
       {{ getErrorMessage() }}

@@ -8,20 +8,42 @@ import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@ang
 })
 export class AdduserComponent implements OnInit {
   registerForm: FormGroup;
+  isSubmitted: boolean = false;
+  emailAddress:any;
+  Name:any;
+  //data1: string = 'Sarathlal Saseendran';  
+  //data2: string = '12345';  
+  
+  constructor( private fb: FormBuilder) {
+    this.registerForm = fb.group({
+      emailAddress: ["", Validators.required],
+      Name:["", Validators.required],      
+    });
 
-  constructor( private formBuilder: FormBuilder,) { }
+   }
 
   ngOnInit() {
 
-    this.registerForm = new FormGroup({
-      emailAddress: new FormControl("", Validators.required),
-      
-    });
+    
   }
 
   onSubmit()
   {
-    //this.emailAddress
+    this.isSubmitted = true;
+
+    this.registerForm.patchValue({
+      emailAddress: this.emailAddress,
+      Name: this.Name
+    });
+
+    if(this.registerForm.valid) 
+    {
+        console.log('form validaiton yes');
+    }
+    else{
+      console.log('form validaiton no......');
+    }
+
   }
 
 }

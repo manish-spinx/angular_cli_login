@@ -9,11 +9,12 @@ ViewChild,
 ElementRef,
 } from '@angular/core';
 
+import { Result } from "../../result.model";
+
 @Component({
     selector: 'spinx-textbox',
     templateUrl: 'textbox.component.html'
 })
-
 
 export class TextboxComponent implements OnInit {
 
@@ -24,6 +25,7 @@ export class TextboxComponent implements OnInit {
 
 @Output() modelChange: EventEmitter<String> = new EventEmitter<String>();
 @Input() model: string;
+
 
 @ViewChild("control", { static: true }) control: ElementRef;
 
@@ -53,7 +55,8 @@ getErrorMessage() {
 
 constructor() { }
 
-ngOnInit() { }
+ngOnInit() { 
 
+}
 
 }
