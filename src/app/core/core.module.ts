@@ -5,12 +5,15 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { PasswordComponent } from './controls/password/password.component';
 import { TextareaComponent } from './controls/textarea/textarea.component';
 import { TextboxComponent } from './controls/textbox/textbox.component';
+import { CustomTextboxComponent } from './controls/customtextbox/custom-textbox.component';
+
 
 @NgModule({
   declarations: [
     PasswordComponent,
     TextareaComponent,
     TextboxComponent,
+    CustomTextboxComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import { TextboxComponent } from './controls/textbox/textbox.component';
     PasswordComponent,
     TextareaComponent,
     TextboxComponent,
+    CustomTextboxComponent,
   ],
 })
 export class CoreModule { }

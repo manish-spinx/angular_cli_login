@@ -11,12 +11,13 @@ export class AdduserComponent implements OnInit {
   isSubmitted: boolean = false;
   emailAddress:any;
   Name:any;
+
   //data1: string = 'Sarathlal Saseendran';  
   //data2: string = '12345';  
   
   constructor( private fb: FormBuilder) {
     this.registerForm = fb.group({
-      emailAddress: ["", Validators.required],
+      //emailAddress: ["", Validators.required],
       Name:["", Validators.required],      
     });
 
@@ -31,10 +32,14 @@ export class AdduserComponent implements OnInit {
   {
     this.isSubmitted = true;
 
-    this.registerForm.patchValue({
-      emailAddress: this.emailAddress,
-      Name: this.Name
-    });
+    // this.registerForm.patchValue({
+    //   emailAddress: this.emailAddress,
+    //   Name: this.Name
+    // });
+
+     console.log('need to check record....');
+     console.log(this.registerForm.value.Name);
+
 
     if(this.registerForm.valid) 
     {
@@ -42,8 +47,16 @@ export class AdduserComponent implements OnInit {
     }
     else{
       console.log('form validaiton no......');
+      
     }
 
   }
+
+  get_data(value)
+  {
+    console.log('aa' +value);
+
+  }
+
 
 }

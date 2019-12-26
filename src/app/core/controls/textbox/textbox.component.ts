@@ -10,6 +10,7 @@ ElementRef,
 } from '@angular/core';
 
 import { Result } from "../../result.model";
+import { FormGroup, FormBuilder,FormControl  } from '@angular/forms';
 
 @Component({
     selector: 'spinx-textbox',
@@ -18,20 +19,23 @@ import { Result } from "../../result.model";
 
 export class TextboxComponent implements OnInit {
 
+@Input() manish_address: FormControl ;
 @Input() id: string;
 @Input() label: string;
+@Input() name: string;
 @Input() placeholder: string = null;
 @Input() maxLength: number = null;
+
 
 @Output() modelChange: EventEmitter<String> = new EventEmitter<String>();
 @Input() model: string;
 
-
 @ViewChild("control", { static: true }) control: ElementRef;
 
-ngAfterViewInit() {
 
-     console.log('calling....1111');
+
+
+ngAfterViewInit() {
     // Adding placeholder
     if (this.placeholder != null)
       this.control.nativeElement.setAttribute(
@@ -45,6 +49,9 @@ ngAfterViewInit() {
         "maxlength",
         this.maxLength
       );
+
+       //console.log('----user-------');
+      console.log(this.manish_address);    
   }
 
 anyError() {
@@ -59,6 +66,10 @@ constructor() { }
 
 ngOnInit() { 
 
+    
+       
 }
+
+
 
 }
