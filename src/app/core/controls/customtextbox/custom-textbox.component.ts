@@ -25,11 +25,9 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     @Input() public minlength = 0;
     @Input() public maxlength:number = null;
     @Input() public pattern:string;
+    @Input() public customMsg:string; 
 
     
-   
-    
-
     private errorMessages = new Map<string, () => string>();
 
     public onChangeFn = (_: any) => {
@@ -41,39 +39,35 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     public onTouchedFn = () => {};
 
     constructor(@Self() @Optional() public control: NgControl) {
-        console.log('----------constructor-------------');
+        //console.log('----------constructor-------------');
         this.control && (this.control.valueAccessor = this);
- 
-        // console.log('-------check---this.control-----------');  
-        // console.log(this.control);
-        // console.log('---------check-----------this.control.valueAccessor----------------');  
-        // console.log(this.control.valueAccessor);
 
         this.errorMessages.set('required', () => `${this.label} is required.`);
         this.errorMessages.set('minlength', () => `The no. of characters should not be less than ${this.minlength}.`);
         this.errorMessages.set('maxlength', () => `The no. of characters should not be greater than ${this.maxlength}.`);
         this.errorMessages.set('pattern', () => `Please Enter Valid Email Id`);
         this.errorMessages.set('mustMatch', () => `Please Password Matched !`);
+        this.errorMessages.set('mustNumeric', () => `Please Enter Only Numeric character`);
     }
 
     public get invalid(): boolean {
-        console.log('----------invalid-------------');        
+        //console.log('----------invalid-------------');        
         return this.control ? this.control.invalid : false;
     }
 
     public get showError(): boolean {
 
-        console.log('----------showError-------------');
+        //console.log('----------showError-------------');
 
         if (!this.control) {
 
-            console.log('----------showError-----------control----');
+            //console.log('----------showError-----------control----');
 
             return false;
         }
 
-         console.log('check this.control inside showError section');
-         console.log(this.control);
+         //console.log('check this.control inside showError section');
+         //console.log(this.control);
 
 
         const { dirty, touched} = this.control;
@@ -83,10 +77,10 @@ export class CustomTextboxComponent implements ControlValueAccessor {
 
     public get errors(): Array<string> {
 
-        console.log('----------errors-------------');
+        //console.log('----------errors-------------');
 
         if (!this.control) {
-            console.log('----------errors-------------control-----');
+            //console.log('----------errors-------------control-----');
             return [];
         }
 

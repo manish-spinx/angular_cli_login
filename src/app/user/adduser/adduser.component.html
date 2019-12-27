@@ -3,7 +3,7 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> 
     <div class="container">
 
-      <app-custom-textbox
+     <!-- <app-custom-textbox
         name="Name"
         id="Name"
         type="text"
@@ -25,11 +25,11 @@
 		label="Email"
 		placeholder="Please enter your Email Address"
         [required]="true"
-        formControlName="email"
-        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        formControlName="email"        
 	    ngModel>
     </app-custom-textbox>
     
+    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
 
     <app-custom-textbox
         name="password"
@@ -51,9 +51,23 @@
 		label="Confirm Password"
 		placeholder="Please enter confirm password"		
         [required]="true"
-        formControlName="cnfpassword"
+        formControlName="cnfpassword"                
+	    ngModel>
+    </app-custom-textbox>   -->
+    
+    
+     <app-custom-textbox
+        name="mobile"
+        id="mobile"
+        type="text"
+		label="Mobile"
+		placeholder="Please enter Mobile Number"		
+        [required]="true"
+        formControlName="mobile"                
 	    ngModel>
     </app-custom-textbox> 
+
+    <!-- pattern="^[0-9]*$" -->
 
        
         

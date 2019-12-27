@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
+import { MustNumeric } from 'src/app/_helpers/must-numeric.validator';
+
 
 @Component({
   selector: 'app-adduser',
@@ -18,10 +20,13 @@ export class AdduserComponent implements OnInit {
     this.registerForm = fb.group({
       password: ["", Validators.required],
       cnfpassword: ["", Validators.required],
+      mobile:["", Validators.required],
+      //mobile:([Validators.required,MustNumeric('mobile')]),
       Name:["", Validators.required],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
-        validator: MustMatch('password', 'cnfpassword')
+        validator: [MustMatch('password', 'cnfpassword'),MustNumeric('mobile')]
+        //validator: MustNumeric('mobile'),
     });
 
    }
