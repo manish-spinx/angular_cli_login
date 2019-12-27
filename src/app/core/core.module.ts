@@ -1,3 +1,4 @@
+//import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
@@ -16,6 +17,7 @@ import { CustomTextboxComponent } from './controls/customtextbox/custom-textbox.
     CustomTextboxComponent,
   ],
   imports: [
+  //  BrowserModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule

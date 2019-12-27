@@ -1,17 +1,61 @@
 <h1>Add New User</h1>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">
+<!-- #form="ngForm" -->
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> 
     <div class="container">
 
       <app-custom-textbox
         name="Name"
         id="Name"
+        type="text"
 		label="User Name"
 		placeholder="Please enter your user name"
-		minlength="15"
+        minlength="10"
+        maxlength="15"
         [required]="true"
         formControlName="Name"
 	    ngModel>
-	</app-custom-textbox>
+    </app-custom-textbox>
+
+      
+
+  <app-custom-textbox
+        name="email"
+        id="email"
+        type="text"
+		label="Email"
+		placeholder="Please enter your Email Address"
+        [required]="true"
+        formControlName="email"
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+	    ngModel>
+    </app-custom-textbox>
+    
+
+    <app-custom-textbox
+        name="password"
+        id="password"
+        type="password"
+		label="Password"
+		placeholder="Please enter password"
+		minlength="6"
+        [required]="true"
+        formControlName="password"
+	    ngModel>
+    </app-custom-textbox> 
+
+
+    <app-custom-textbox
+        name="cnfpassword"
+        id="cnfpassword"
+        type="password"
+		label="Confirm Password"
+		placeholder="Please enter confirm password"		
+        [required]="true"
+        formControlName="cnfpassword"
+	    ngModel>
+    </app-custom-textbox> 
+
+       
         
    <!-- <spinx-textbox id="Name" [(model)]="Name" name="Name" 
     label="Name" maxlength="10" manish_address="registerForm.controls.Name" placeholder="Please Enter Name" (modelChange)="get_data($event)"></spinx-textbox> -->

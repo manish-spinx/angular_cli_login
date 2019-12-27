@@ -18,14 +18,16 @@
 
 <div class="form-group">
 	<div class="input-wrapper" [class.required]="required">
-    <label>{{ label }}</label>
+    <label [for]="id">{{ label }}</label>
 	<input 
-		type="text" 
+		[type]="type" 
 		class="form-control"
 		[id]="id"
+		[pattern]="pattern"
 		[required]="required"
 		[disabled]="disabled"
 		[minlength]="minlength"
+		[maxlength]="maxlength"		
 		[placeholder]="placeholder"
 		[(ngModel)]="data"
 		[ngModelOptions]="{standalone: true}"
