@@ -3,7 +3,7 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> 
     <div class="container">
 
-     <!-- <app-custom-textbox
+    <!-- <app-custom-textbox
         name="Name"
         id="Name"
         type="text"
@@ -29,7 +29,7 @@
 	    ngModel>
     </app-custom-textbox>
     
-    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+     pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  
 
     <app-custom-textbox
         name="password"
@@ -53,7 +53,7 @@
         [required]="true"
         formControlName="cnfpassword"                
 	    ngModel>
-    </app-custom-textbox>   -->
+    </app-custom-textbox>    -->
     
     
      <app-custom-textbox
@@ -68,6 +68,17 @@
     </app-custom-textbox> 
 
     <!-- pattern="^[0-9]*$" -->
+
+    <app-custom-textbox
+        name="company"
+        id="company"
+        type="text"
+		label="Company Name"
+		placeholder="Please enter company name"		
+        [required]="true"
+        formControlName="company"                
+	    ngModel>
+    </app-custom-textbox> 
 
        
         

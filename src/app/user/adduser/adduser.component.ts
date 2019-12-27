@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { MustMatch } from 'src/app/_helpers/must-match.validator';
-import { MustNumeric } from 'src/app/_helpers/must-numeric.validator';
+import { SpinxValidMatch } from 'src/app/_helpers/spinx-valid-match.validator';
+import { SpinxValidNumeric } from 'src/app/_helpers/spinx-valid-numeric.validator';
+import { SpinxValidAlphabet } from 'src/app/_helpers/spinx-valid-alphabet.validator';
 
 
 @Component({
@@ -12,20 +13,20 @@ import { MustNumeric } from 'src/app/_helpers/must-numeric.validator';
 export class AdduserComponent implements OnInit {
   registerForm: FormGroup;
   isSubmitted: boolean = false;
-  
-  //data1: string = 'Sarathlal Saseendran';  
-  //data2: string = '12345';  
+
+  //spinx_valid_alphabet.validator.ts
   
   constructor( private fb: FormBuilder) {
     this.registerForm = fb.group({
       password: ["", Validators.required],
       cnfpassword: ["", Validators.required],
       mobile:["", Validators.required],
+      company:["", Validators.required],
       //mobile:([Validators.required,MustNumeric('mobile')]),
       Name:["", Validators.required],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
-        validator: [MustMatch('password', 'cnfpassword'),MustNumeric('mobile')]
+        validator: [SpinxValidMatch('password', 'cnfpassword'),SpinxValidNumeric('mobile'),SpinxValidAlphabet('company')]
         //validator: MustNumeric('mobile'),
     });
 

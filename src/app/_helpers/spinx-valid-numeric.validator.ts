@@ -1,10 +1,10 @@
 import { FormGroup } from '@angular/forms';
-export function MustNumeric(controlName: string) {
+export function SpinxValidNumeric(controlName: string) {
     return (formGroup: FormGroup) => 
     {
         const control = formGroup.controls[controlName];
 
-        if (control.errors && !control.errors.mustNumeric) {
+        if (control.errors && !control.errors.spinxvalidNumeric) {
             return;
         }
 
@@ -13,7 +13,7 @@ export function MustNumeric(controlName: string) {
             control.setErrors(null);
          }
          else{
-            control.setErrors({ mustNumeric: true });
+            control.setErrors({ spinxvalidNumeric: true });
          }
 
     }

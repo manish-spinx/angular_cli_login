@@ -46,8 +46,10 @@ export class CustomTextboxComponent implements ControlValueAccessor {
         this.errorMessages.set('minlength', () => `The no. of characters should not be less than ${this.minlength}.`);
         this.errorMessages.set('maxlength', () => `The no. of characters should not be greater than ${this.maxlength}.`);
         this.errorMessages.set('pattern', () => `Please Enter Valid Email Id`);
-        this.errorMessages.set('mustMatch', () => `Please Password Matched !`);
-        this.errorMessages.set('mustNumeric', () => `Please Enter Only Numeric character`);
+        this.errorMessages.set('spinxvalidMatch', () => `Please Password Matched !`);
+        this.errorMessages.set('spinxvalidNumeric', () => `Please Enter Only Numeric character`);
+        this.errorMessages.set('spinxvalidAlphabet', () => `Please Enter Only Alphabet character`);
+        
     }
 
     public get invalid(): boolean {
