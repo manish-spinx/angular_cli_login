@@ -26,7 +26,8 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     @Input() public maxlength:number = null;
     @Input() public pattern:string;
     @Input() public customMsg:string; 
-
+    @Input() public isSubmitted:boolean; 
+      
     
     private errorMessages = new Map<string, () => string>();
 
@@ -39,7 +40,7 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     public onTouchedFn = () => {};
 
     constructor(@Self() @Optional() public control: NgControl) {
-        //console.log('----------constructor-------------');
+        console.log('----------constructor-------------');
         this.control && (this.control.valueAccessor = this);
 
         this.errorMessages.set('required', () => `${this.label} is required.`);
@@ -53,13 +54,13 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     }
 
     public get invalid(): boolean {
-        //console.log('----------invalid-------------');        
+        console.log('----------invalid-------------');        
         return this.control ? this.control.invalid : false;
     }
 
     public get showError(): boolean {
 
-        //console.log('----------showError-------------');
+        console.log('----------showError-------------');
 
         if (!this.control) {
 
@@ -68,9 +69,8 @@ export class CustomTextboxComponent implements ControlValueAccessor {
             return false;
         }
 
-         //console.log('check this.control inside showError section');
-         //console.log(this.control);
-
+         console.log('check this.control inside showError section');
+         console.log(this.control);
 
         const { dirty, touched} = this.control;
 
@@ -79,7 +79,7 @@ export class CustomTextboxComponent implements ControlValueAccessor {
 
     public get errors(): Array<string> {
 
-        //console.log('----------errors-------------');
+        console.log('----------errors-------------');
 
         if (!this.control) {
             //console.log('----------errors-------------control-----');
@@ -91,27 +91,27 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     }
 
     public registerOnChange(fn: any): void {        
-        //console.log('----------registerOnChange-------------');                
+        console.log('----------registerOnChange-------------');                
         this.onChangeFn = fn;
     }
 
     public registerOnTouched(fn: any): void {
-        //console.log('----------registerOnTouched-------------');
+        console.log('----------registerOnTouched-------------');
         this.onTouchedFn = fn;
     }
 
     public setDisabledState(isDisabled: boolean): void {
-        //console.log('----------setDisabledState-------------');
+        console.log('----------setDisabledState-------------');
         this.disabled = isDisabled;
     }
 
     public writeValue(obj: any): void {
-        //console.log('----------writeValue-------------');
+        console.log('----------writeValue-------------');
         this.data = obj;
     }
 
     public onChange() {
-        //console.log('----------onChange-------------');
+        console.log('----------onChange-------------');
         this.onChangeFn(this.data);
     }
 }

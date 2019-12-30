@@ -19,12 +19,15 @@ export class AdduserComponent implements OnInit {
       password: ["", Validators.required],
       cnfpassword: ["", Validators.required],
       mobile:["", Validators.required],
-      company:["", Validators.required],
-      //mobile:([Validators.required,MustNumeric('mobile')]),
+      company:["", Validators.required],      
       Name:["", Validators.required],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
-        validator: [SpinxValidMatch('password', 'cnfpassword'),SpinxValidNumeric('mobile'),SpinxValidAlphabet('company')]
+        validator: [
+                     SpinxValidMatch('password', 'cnfpassword'),
+                     SpinxValidNumeric('mobile'),
+                     SpinxValidAlphabet('company')
+                    ]
     });
 
    }
@@ -43,8 +46,8 @@ export class AdduserComponent implements OnInit {
     //   Name: this.Name
     // });
 
-     console.log('need to check record....');
-     console.log(this.registerForm);
+     //console.log('need to check record....');
+    // console.log(this.registerForm);
 
     if(this.registerForm.valid) 
     {
@@ -58,11 +61,11 @@ export class AdduserComponent implements OnInit {
 
   }
 
-  get_data(value)
-  {
-    console.log('aa' +value);
+  // get_data(value)
+  // {
+  //   console.log('aa' +value);
 
-  }
+  // }
 
 
 }
