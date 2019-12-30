@@ -72,7 +72,7 @@ export class CustomTextboxComponent implements ControlValueAccessor {
 
     public get errors(): Array<string> {
 
-        console.log('----------errors-------------');
+       // console.log('----------errors-------------');
 
         if (!this.control) {
             return [];
@@ -89,27 +89,27 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     }
 
     public registerOnChange(fn: any): void {        
-        console.log('----------registerOnChange-------------');                
+       // console.log('----------registerOnChange-------------');                
         this.onChangeFn = fn;
     }
 
     public registerOnTouched(fn: any): void {
-        console.log('----------registerOnTouched-------------');
+        //console.log('----------registerOnTouched-------------');
         this.onTouchedFn = fn;
     }
 
     public setDisabledState(isDisabled: boolean): void {
-        console.log('----------setDisabledState-------------');
+       // console.log('----------setDisabledState-------------');
         this.disabled = isDisabled;
     }
 
     public writeValue(obj: any): void {
-        console.log('----------writeValue-------------');
+        //console.log('----------writeValue-------------');
         this.data = obj;
     }
 
     public onChange() {
-        console.log('----------onChange-------------');
+        //console.log('----------onChange-------------');
         this.onChangeFn(this.data);
     }
 }

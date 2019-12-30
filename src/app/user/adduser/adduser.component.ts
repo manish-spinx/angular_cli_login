@@ -13,8 +13,12 @@ import { SpinxValidAlphabet } from 'src/app/_helpers/spinx-valid-alphabet.valida
 export class AdduserComponent implements OnInit {
   registerForm: FormGroup;
   isSubmitted: boolean = false;
-
   submit_validaiton_flag: boolean = false;
+
+  public genders = [
+    { id:'1',value: 'F', display: 'Female' },
+    { id:'2',value: 'M', display: 'Male' }
+  ];
 
   constructor( private fb: FormBuilder) {
     this.registerForm = fb.group({
@@ -49,8 +53,7 @@ export class AdduserComponent implements OnInit {
     //   Name: this.Name
     // });
 
-     //console.log('need to check record....');
-    // console.log(this.registerForm);
+    console.log('need to check record....');
 
     if(this.registerForm.valid) 
     {

@@ -1,29 +1,25 @@
-    <!-- <div class="form-group">
-        <label>all items are approved</label>
-        <input attr.name={{uid}} attr.id={{uid}} type="radio" [(ngModel)]="isApproved" [value]="true">
-  </div> -->
+<div>
+    <label [for]="id">{{label}}</label>    
+    <div *ngFor="let g of genders_custom;let i = index">
+        <label>
+             <input 
+                type="radio" 
+                (submit_validaiton_flag)="submit_validaiton_flag"
+                [name]="gender" 
+                [id]="g.id" 
+                [(ngModel)]='data' 
+                [required]="required"
+                [ngModelOptions]="{standalone: true}" 
+                [value]="g.value"
+                (input)="onChange()"
+		        (change)="onChange()"
+		        (blur)="onTouchedFn()"
+                >{{g.display}}
+        </label>
+    </div>
 
-  <div class="form-group">
-	<div class="input-wrapper" [class.required]="required">
-    <label [for]="id">{{ label }}</label>
-	<input 
-        type="radio"
-		(submit_validaiton_flag)="submit_validaiton_flag"
-        [id]="id"
-        [name]="name"
-        [(ngModel)]="data"
-        [value]="value"
-        [required]="required"
-        [ngModelOptions]="{standalone: true}"        
-		(input)="onChange()"
-		(change)="onChange()"
-        (blur)="onTouchedFn()"/>
+    <small class="text-danger" *ngIf="(showError || submit_validaiton_flag)">
+        {{errors[0]}}
+	  </small>
 
-        <small class="text-danger" *ngIf="(showError || submit_validaiton_flag)">
-            {{errors[0]}}
-          </small>
-        
-	  </div>
-  </div>
-
-  
+</div>

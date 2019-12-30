@@ -9,26 +9,23 @@ import {ControlValueAccessor, NgControl,NG_VALUE_ACCESSOR} from "@angular/forms"
 
 export class RadioButtonComponent implements ControlValueAccessor {
 
+    
     @Input() public label: string;
     @Input() public id: string;
-    @Input() public name: string;
-    @Input() public disabled = false;
-    @Input() public data: string;
-    @Input() public value: string;  
-    @Input() public required = false;
-      
     @Input() public submit_validaiton_flag:boolean = false; 
+    @Input() public genders_custom:any;
+    @Input() public data: string;
 
+    @Input() public disabled = false;
 
     private errorMessages = new Map<string, () => string>();
     public onChangeFn = (_: any) => {};
     public onTouchedFn = () => {};
-
+    
 
     constructor(@Self() @Optional() public control: NgControl) {
         this.control && (this.control.valueAccessor = this);
-
-        this.errorMessages.set('required', () => `${this.label} is required.`);
+        this.errorMessages.set('required', () => `${this.label} field is required.`);
     }
 
     public get invalid(): boolean {
@@ -36,6 +33,7 @@ export class RadioButtonComponent implements ControlValueAccessor {
     }
 
     public get showError(): boolean {
+
         if (!this.control) {
             return false;
         }
@@ -44,39 +42,40 @@ export class RadioButtonComponent implements ControlValueAccessor {
     }
 
     public get errors(): Array<string> {
-        if (!this.control) {
-            return [];
-        }
-        const { errors } = this.control;
 
-        if(errors!=null)
-        {
-            return Object.keys(errors).map(key => this.errorMessages.has(key) ? this.errorMessages.get(key)() : <string>errors[key] || key);
-        }
-        else{
-            return [];
-        }
-    }
+         if (!this.control) {
+             return [];
+         }
 
-    
+         const { errors } = this.control;
+
+         if(errors!=null)
+         {
+             return Object.keys(errors).map(key => this.errorMessages.has(key) ? this.errorMessages.get(key)() : <string>errors[key] || key);
+         }
+         else{
+             return [];
+         }
+     }
+
 
     public registerOnChange(fn: any): void {        
-        this.onChangeFn = fn;
-    }
-
-    public registerOnTouched(fn: any): void {
-        this.onTouchedFn = fn;
-    }
-
-    public setDisabledState(isDisabled: boolean): void {
+         this.onChangeFn = fn;
+     }
+ 
+     public registerOnTouched(fn: any): void {
+         this.onTouchedFn = fn;
+     }
+ 
+     public setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
-    }
-
-    public writeValue(obj: any): void {
-        this.data = obj;
-    }
-
-    public onChange() {
-        this.onChangeFn(this.data);
-    }
+     }
+ 
+     public writeValue(obj: any): void {
+         this.data = obj;
+     }
+ 
+     public onChange() {
+         this.onChangeFn(this.data);
+     }
 }
