@@ -3,6 +3,29 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> 
     <div class="container">
 
+
+    <spinx-radio
+          name="gender"
+          id="gender"
+          label="Male"
+          formControlName="gender"
+          value="m"
+          [required]="true"
+          [submit_validaiton_flag]="submit_validaiton_flag"
+          ngModel
+    ></spinx-radio>
+
+    <spinx-radio
+          name="gender"
+          id="gender"
+          label="Female"
+          formControlName="gender"
+          value="f"
+          [required]="true"
+          [submit_validaiton_flag]="submit_validaiton_flag"
+          ngModel
+    ></spinx-radio>
+
     <app-custom-textbox
         name="Name"
         id="Name"
@@ -13,7 +36,7 @@
         maxlength="15"
         [required]="true"
         formControlName="Name"
-        [isSubmitted_flag]="isSubmitted_flag"  
+        [submit_validaiton_flag]="submit_validaiton_flag"  
 	    ngModel>
     </app-custom-textbox>
 
@@ -27,7 +50,7 @@
 		placeholder="Please enter your Email Address"
         [required]="true"
         formControlName="email"    
-        [isSubmitted_flag]="isSubmitted_flag"      
+        [submit_validaiton_flag]="submit_validaiton_flag"      
 	    ngModel>
     </app-custom-textbox>
     
@@ -42,7 +65,7 @@
 		minlength="6"
         [required]="true"
         formControlName="password"
-        [isSubmitted_flag]="isSubmitted_flag"  
+        [submit_validaiton_flag]="submit_validaiton_flag"  
 	    ngModel>
     </app-custom-textbox> 
 
@@ -55,7 +78,7 @@
 		placeholder="Please enter confirm password"		
         [required]="true"
         formControlName="cnfpassword"     
-        [isSubmitted_flag]="isSubmitted_flag"             
+        [submit_validaiton_flag]="submit_validaiton_flag"             
 	    ngModel>
     </app-custom-textbox>   
     
@@ -68,7 +91,7 @@
 		placeholder="Please enter Mobile Number"		
         [required]="true"
         formControlName="mobile"
-        [isSubmitted_flag]="isSubmitted_flag"  
+        [submit_validaiton_flag]="submit_validaiton_flag"  
 	    ngModel>
     </app-custom-textbox>
 
@@ -82,7 +105,7 @@
 		placeholder="Please enter company name"		
         [required]="true"
         formControlName="company"
-        [isSubmitted_flag]="isSubmitted_flag"
+        [submit_validaiton_flag]="submit_validaiton_flag"
 	    ngModel>
     </app-custom-textbox> 
 

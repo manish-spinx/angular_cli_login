@@ -14,7 +14,7 @@ export class AdduserComponent implements OnInit {
   registerForm: FormGroup;
   isSubmitted: boolean = false;
 
-  isSubmitted_flag: boolean = false;
+  submit_validaiton_flag: boolean = false;
 
   constructor( private fb: FormBuilder) {
     this.registerForm = fb.group({
@@ -23,6 +23,7 @@ export class AdduserComponent implements OnInit {
       mobile:["", Validators.required],
       company:["", Validators.required],      
       Name:["", Validators.required],
+      gender:["", Validators.required],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
@@ -59,7 +60,7 @@ export class AdduserComponent implements OnInit {
       console.log('form validaiton no......');
 
       this.isSubmitted = false;
-      this.isSubmitted_flag=true;
+      this.submit_validaiton_flag=true;
 
       return;
       

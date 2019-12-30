@@ -26,7 +26,7 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     @Input() public maxlength:number = null;
     @Input() public pattern:string;
     @Input() public customMsg:string; 
-    @Input() public isSubmitted_flag:boolean = false; 
+    @Input() public submit_validaiton_flag:boolean = false; 
       
     
     private errorMessages = new Map<string, () => string>();
