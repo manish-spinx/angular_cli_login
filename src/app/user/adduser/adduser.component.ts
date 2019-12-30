@@ -14,6 +14,8 @@ export class AdduserComponent implements OnInit {
   registerForm: FormGroup;
   isSubmitted: boolean = false;
 
+  isSubmitted_flag: boolean = false;
+
   constructor( private fb: FormBuilder) {
     this.registerForm = fb.group({
       password: ["", Validators.required],
@@ -55,6 +57,11 @@ export class AdduserComponent implements OnInit {
     }
     else{
       console.log('form validaiton no......');
+
+      this.isSubmitted = false;
+      this.isSubmitted_flag=true;
+
+      return;
       
     }
 

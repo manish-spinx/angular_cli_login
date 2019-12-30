@@ -13,7 +13,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 @NgModule({
   declarations: [
     ProfileComponent, 
-    AdduserComponent
+    AdduserComponent,
   ],
   imports: [
     CommonModule,

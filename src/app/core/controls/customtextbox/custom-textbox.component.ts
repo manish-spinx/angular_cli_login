@@ -26,21 +26,21 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     @Input() public maxlength:number = null;
     @Input() public pattern:string;
     @Input() public customMsg:string; 
-    @Input() public isSubmitted:boolean; 
+    @Input() public isSubmitted_flag:boolean = false; 
       
     
     private errorMessages = new Map<string, () => string>();
 
     public onChangeFn = (_: any) => {
 
-        console.log('----------onChangeFn-------------');
+        //console.log('----------onChangeFn-------------');
 
     };
 
     public onTouchedFn = () => {};
 
     constructor(@Self() @Optional() public control: NgControl) {
-        console.log('----------constructor-------------');
+        //console.log('----------constructor-------------');
         this.control && (this.control.valueAccessor = this);
 
         this.errorMessages.set('required', () => `${this.label} is required.`);
@@ -54,26 +54,19 @@ export class CustomTextboxComponent implements ControlValueAccessor {
     }
 
     public get invalid(): boolean {
-        console.log('----------invalid-------------');        
+        //console.log('----------invalid-------------');        
         return this.control ? this.control.invalid : false;
     }
 
     public get showError(): boolean {
 
-        console.log('----------showError-------------');
+        //console.log('----------showError-------------');
 
         if (!this.control) {
-
-            //console.log('----------showError-----------control----');
-
             return false;
         }
 
-         console.log('check this.control inside showError section');
-         console.log(this.control);
-
         const { dirty, touched} = this.control;
-
         return this.invalid ? (dirty || touched) : false;
     }
 
@@ -82,12 +75,17 @@ export class CustomTextboxComponent implements ControlValueAccessor {
         console.log('----------errors-------------');
 
         if (!this.control) {
-            //console.log('----------errors-------------control-----');
             return [];
         }
-
         const { errors } = this.control;
-        return Object.keys(errors).map(key => this.errorMessages.has(key) ? this.errorMessages.get(key)() : <string>errors[key] || key);
+
+        if(errors!=null)
+        {
+            return Object.keys(errors).map(key => this.errorMessages.has(key) ? this.errorMessages.get(key)() : <string>errors[key] || key);
+        }
+        else{
+            return [];
+        }
     }
 
     public registerOnChange(fn: any): void {        

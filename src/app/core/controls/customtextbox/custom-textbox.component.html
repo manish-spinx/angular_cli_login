@@ -21,6 +21,7 @@
     <label [for]="id">{{ label }}</label>
 	<input 
 		[type]="type" 
+		(isSubmitted_message)="isSubmitted_message"
 		class="form-control"
 		[id]="id"
 		[pattern]="pattern"
@@ -34,8 +35,8 @@
 		(input)="onChange()"
 		(change)="onChange()"
 		(blur)="onTouchedFn()"/>
-	      
-      <small class="text-danger" *ngIf="showError">
+
+      <small class="text-danger" *ngIf="(showError || isSubmitted_flag)">
         {{errors[0]}}
 	  </small>
 	  </div>

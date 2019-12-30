@@ -13,6 +13,7 @@
         maxlength="15"
         [required]="true"
         formControlName="Name"
+        [isSubmitted_flag]="isSubmitted_flag"  
 	    ngModel>
     </app-custom-textbox>
 
@@ -25,13 +26,14 @@
 		label="Email"
 		placeholder="Please enter your Email Address"
         [required]="true"
-        formControlName="email"        
+        formControlName="email"    
+        [isSubmitted_flag]="isSubmitted_flag"      
 	    ngModel>
     </app-custom-textbox>
     
      <!-- pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"   -->
 
-    <app-custom-textbox
+     <app-custom-textbox
         name="password"
         id="password"
         type="password"
@@ -40,6 +42,7 @@
 		minlength="6"
         [required]="true"
         formControlName="password"
+        [isSubmitted_flag]="isSubmitted_flag"  
 	    ngModel>
     </app-custom-textbox> 
 
@@ -51,7 +54,8 @@
 		label="Confirm Password"
 		placeholder="Please enter confirm password"		
         [required]="true"
-        formControlName="cnfpassword"                
+        formControlName="cnfpassword"     
+        [isSubmitted_flag]="isSubmitted_flag"             
 	    ngModel>
     </app-custom-textbox>   
     
@@ -63,9 +67,10 @@
 		label="Mobile"
 		placeholder="Please enter Mobile Number"		
         [required]="true"
-        formControlName="mobile"  
+        formControlName="mobile"
+        [isSubmitted_flag]="isSubmitted_flag"  
 	    ngModel>
-    </app-custom-textbox> 
+    </app-custom-textbox>
 
     <!-- pattern="^[0-9]*$" -->
 
@@ -77,6 +82,7 @@
 		placeholder="Please enter company name"		
         [required]="true"
         formControlName="company"
+        [isSubmitted_flag]="isSubmitted_flag"
 	    ngModel>
     </app-custom-textbox> 
 
@@ -85,7 +91,7 @@
    <!-- <spinx-textbox id="Name" [(model)]="Name" name="Name" 
     label="Name" maxlength="10" manish_address="registerForm.controls.Name" placeholder="Please Enter Name" (modelChange)="get_data($event)"></spinx-textbox> -->
 
-    <!-- <div class="alert alert-danger" *ngIf="isSubmitted && registerForm.controls.Name.errors">
+    <!-- <div class="alert alert-danger" *ngIf="isSubmitted_message && registerForm.controls.Name.errors">
         <div *ngIf="registerForm.hasError('required','Name')">Please enter email.</div>
     </div>  -->
 
@@ -100,5 +106,8 @@
     </div>
     
 
-    <button class="btn btn-primary" [disabled]="registerForm.invalid">Add User</button>
+    <button class="btn btn-primary" >Add User</button>
 </form>
+
+
+<!-- [disabled]="registerForm.invalid" -->
