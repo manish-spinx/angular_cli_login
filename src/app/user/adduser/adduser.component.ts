@@ -21,6 +21,12 @@ export class AdduserComponent implements OnInit {
   ];
 
   public country_list = [
+    { id:'1',name: 'India'},
+    { id:'2',name: 'Us' },
+    { id:'3',name: 'Russian' },
+  ];
+
+  public team_list = [
     { id:'1',name: 'India Team'},
     { id:'2',name: 'Us Team' },
     { id:'3',name: 'Russian Team' },
@@ -36,6 +42,7 @@ export class AdduserComponent implements OnInit {
       gender:["", Validators.required],
       address:[null],
       country:["", Validators.required],
+      team:["", Validators.required],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
