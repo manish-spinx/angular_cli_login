@@ -12,6 +12,7 @@ export class RadioButtonComponent implements ControlValueAccessor {
     
     @Input() public label: string;
     @Input() public id: string;
+    @Input() public name: string;    
     @Input() public submit_validaiton_flag:boolean = false; 
     @Input() public genders_custom:any;
     @Input() public data: string;

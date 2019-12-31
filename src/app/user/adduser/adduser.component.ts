@@ -16,7 +16,7 @@ export class AdduserComponent implements OnInit {
   submit_validaiton_flag: boolean = false;
 
   public genders = [
-    { id:'1',value: 'F', display: 'Female' },
+    { id:'1',value: 'F', display: 'Female'},
     { id:'2',value: 'M', display: 'Male' }
   ];
 
@@ -28,6 +28,7 @@ export class AdduserComponent implements OnInit {
       company:["", Validators.required],      
       Name:["", Validators.required],
       gender:["", Validators.required],
+      address:[null],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
@@ -54,6 +55,9 @@ export class AdduserComponent implements OnInit {
     // });
 
     console.log('need to check record....');
+
+    console.log(this.registerForm.value.address);
+
 
     if(this.registerForm.valid) 
     {

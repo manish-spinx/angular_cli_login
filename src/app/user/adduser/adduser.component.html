@@ -2,6 +2,15 @@
 <!-- #form="ngForm" -->
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
     <div class="container">
+
+
+    <spinx-textarea
+          rows="5"
+          placeholder="Enter Your Address .."
+          formControlName="address" 
+          id="address"
+          label="Address"
+    ></spinx-textarea>
         
     <spinx-radio 
             label="Gender"
@@ -9,6 +18,7 @@
             [genders_custom]="genders" 
             formControlName="gender" 
             [required]="true"  
+            name="gender"
             [submit_validaiton_flag]="submit_validaiton_flag" 
             ngModel>
     </spinx-radio>
