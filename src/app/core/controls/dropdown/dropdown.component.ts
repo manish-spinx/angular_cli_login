@@ -15,6 +15,8 @@ export class DropdownComponent implements ControlValueAccessor {
     @Input() public disabled = false;
     @Input() public data: string;
     @Input() public record_list:any;
+    @Input() public multiple = false;
+    
 
     @Input() public submit_validaiton_flag:boolean = false; 
     

@@ -3,8 +3,6 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
     <div class="container">
 
-
-
     <spinx-dropdown
        id="country"
        label="Country"
@@ -22,6 +20,7 @@
        [record_list]="team_list"
        formControlName="team"
        [required]="true"  
+       [multiple]="true"
        [submit_validaiton_flag]="submit_validaiton_flag"
     ></spinx-dropdown>
 
