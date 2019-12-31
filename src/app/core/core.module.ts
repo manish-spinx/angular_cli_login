@@ -9,8 +9,7 @@ import { TextareaComponent } from './controls/textarea/textarea.component';
 import { TextboxComponent } from './controls/textbox/textbox.component';
 import { CustomTextboxComponent } from './controls/customtextbox/custom-textbox.component';
 import { RadioButtonComponent } from './controls/radioButton/radiobutton.component';
-
-
+import { DropdownComponent } from './controls/dropdown/dropdown.component';
 
 
 @NgModule({
@@ -19,7 +18,8 @@ import { RadioButtonComponent } from './controls/radioButton/radiobutton.compone
     TextareaComponent,
     TextboxComponent,
     CustomTextboxComponent,
-    RadioButtonComponent
+    RadioButtonComponent,
+    DropdownComponent
   ],
   imports: [
   BrowserModule,
@@ -32,7 +32,8 @@ import { RadioButtonComponent } from './controls/radioButton/radiobutton.compone
     TextareaComponent,
     TextboxComponent,
     CustomTextboxComponent,
-    RadioButtonComponent
+    RadioButtonComponent,
+    DropdownComponent
   ],
 })
 export class CoreModule { }

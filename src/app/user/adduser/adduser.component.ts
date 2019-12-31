@@ -20,6 +20,12 @@ export class AdduserComponent implements OnInit {
     { id:'2',value: 'M', display: 'Male' }
   ];
 
+  public country_list = [
+    { id:'1',name: 'India Team'},
+    { id:'2',name: 'Us Team' },
+    { id:'3',name: 'Russian Team' },
+  ];
+
   constructor( private fb: FormBuilder) {
     this.registerForm = fb.group({
       password: ["", Validators.required],
@@ -29,6 +35,7 @@ export class AdduserComponent implements OnInit {
       Name:["", Validators.required],
       gender:["", Validators.required],
       address:[null],
+      country:["", Validators.required],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
@@ -56,7 +63,7 @@ export class AdduserComponent implements OnInit {
 
     console.log('need to check record....');
 
-    console.log(this.registerForm.value.address);
+    console.log(this.registerForm.value.country);
 
 
     if(this.registerForm.valid) 

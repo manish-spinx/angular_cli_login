@@ -4,6 +4,18 @@
     <div class="container">
 
 
+
+    <spinx-dropdown
+       id="country"
+       label="Country"
+       name="country"
+       [record_list]="country_list"
+       formControlName="country"
+       [required]="true"  
+       [submit_validaiton_flag]="submit_validaiton_flag" 
+         
+    ></spinx-dropdown>
+
     <spinx-textarea
           rows="5"
           placeholder="Enter Your Address .."
