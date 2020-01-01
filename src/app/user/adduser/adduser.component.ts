@@ -14,7 +14,10 @@ export class AdduserComponent implements OnInit {
   registerForm: FormGroup;
   isSubmitted: boolean = false;
   submit_validaiton_flag: boolean = false;
+  team:any;
 
+  drop_down_list:any;
+  
   public genders = [
     { id:'1',value: 'F', display: 'Female'},
     { id:'2',value: 'M', display: 'Male' }
@@ -27,10 +30,12 @@ export class AdduserComponent implements OnInit {
   ];
 
   public team_list = [
-    { id:'1',name: 'India Team'},
-    { id:'2',name: 'Us Team' },
-    { id:'3',name: 'Russian Team' },
+    { id:'1',name: 'India'},
+    { id:'2',name: 'Us' },
+    { id:'3',name: 'Russian' },
   ];
+
+  
 
   constructor( private fb: FormBuilder) {
     this.registerForm = fb.group({
@@ -42,7 +47,7 @@ export class AdduserComponent implements OnInit {
       gender:["", Validators.required],
       address:[null],
       country:["", Validators.required],
-      team:["", Validators.required],
+      team:[[],Validators.required],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
@@ -52,11 +57,38 @@ export class AdduserComponent implements OnInit {
                     ]
     });
 
+
+   
+    
+
+
    }
 
   ngOnInit() {
+  }
 
+  onChange_team_selection(e:any)
+  {
+
+     console.log(e);
+
+    //   var options = e.target.options;
+
+    // var value = [];
+    // for (var i = 0, l = options.length; i < l; i++) {
+    //   if (options[i].selected) {
+    //     value.push(options[i].value);
+    //   }
+    // }
     
+    // console.log('----------value--------');
+    // console.log(value);
+
+  }
+
+  onCancel()
+  {
+     alert('Need to Redirect Listing Page !');
   }
 
   onSubmit()

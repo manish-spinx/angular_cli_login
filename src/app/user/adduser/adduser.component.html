@@ -11,9 +11,10 @@
        formControlName="country"
        [required]="true"  
        [submit_validaiton_flag]="submit_validaiton_flag"
+       (change)="onChange_team_selection($event.target.value)"
     ></spinx-dropdown>
 
-    <spinx-dropdown
+    <!-- <spinx-dropdown
        id="team"
        label="Team Location"
        name="team"
@@ -22,7 +23,20 @@
        [required]="true"  
        [multiple]="true"
        [submit_validaiton_flag]="submit_validaiton_flag"
-    ></spinx-dropdown>
+       (change)="onChange_team_selection($event)"
+    ></spinx-dropdown> -->
+
+    <!-- <div class="form-group row">
+        <label class="col-md-2 col-form-label">chk</label>
+          <div class="col-md-4">
+            <select class="form-control" id="team" name="team" multiple (change)="onChange_team_selection($event)">
+                <option value="undefined" selected>Select Puzzle Category</option>  
+                 <option *ngFor="let aa of team_list" value="{{aa.id}}">{{aa.name}}</option>
+            </select>
+          </div> 
+      </div> -->
+
+    
 
     <spinx-textarea
           rows="5"
@@ -143,11 +157,27 @@
     manish_address="registerForm" 
 -->
 
+      
+    <!-- [disabled]="true" -->
+    
+    <!-- disabled="false" -->
+
+
+    <spinx-button label="Add User" class_custom="btn btn-primary" id="submit_button" (onClick)="onSubmit()" ></spinx-button>     
+      &nbsp;&nbsp;&nbsp;     
+    <spinx-button label="Cancel" class_custom="btn btn-secondary" id="cancel_button" (onClick)="onCancel()" ></spinx-button>
+
     </div>
     
 
-    <button class="btn btn-primary" >Add User</button>
+         <!-- <button class="btn btn-primary"  >Add User</button> -->
+
+   
+
 </form>
 
-
+<br/>
+<br/>
+<br/>
+<br/>
 <!-- [disabled]="registerForm.invalid" -->
