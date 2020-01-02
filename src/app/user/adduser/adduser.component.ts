@@ -15,6 +15,7 @@ export class AdduserComponent implements OnInit {
   isSubmitted: boolean = false;
   submit_validaiton_flag: boolean = false;
   team:any;
+  eduFormArray:string[]=[]; 
 
   drop_down_list:any;
   
@@ -35,6 +36,14 @@ export class AdduserComponent implements OnInit {
     { id:'3',name: 'Russian' },
   ];
 
+
+  public education_list = [
+    { id:'1',name: 'B.E.IT'},
+    { id:'2',name: 'MCA' },
+    { id:'3',name: 'BCA' },
+    { id:'4',name: 'diploma' },
+  ];
+
   
 
   constructor( private fb: FormBuilder) {
@@ -48,6 +57,7 @@ export class AdduserComponent implements OnInit {
       address:[null],
       country:["", Validators.required],
       team:[[],Validators.required],
+      edu_data:[],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
@@ -84,6 +94,21 @@ export class AdduserComponent implements OnInit {
     // console.log('----------value--------');
     // console.log(value);
 
+  }
+
+  get_checkbox_value(e:any)
+  {
+        if(e.target.checked)
+        {
+          this.eduFormArray.push(e.target.id);
+        }
+        else{
+          let index = this.eduFormArray.indexOf(e.target.id);
+          if (index !== -1) {
+              this.eduFormArray.splice(index, 1);
+          }
+        }
+        console.log(this.eduFormArray);
   }
 
   onCancel()

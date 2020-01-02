@@ -11,6 +11,9 @@ import { CustomTextboxComponent } from './controls/customtextbox/custom-textbox.
 import { RadioButtonComponent } from './controls/radioButton/radiobutton.component';
 import { DropdownComponent } from './controls/dropdown/dropdown.component';
 import { ButtonComponent } from './controls/button/button.component';
+import { checkboxComponent } from './controls/checkbox/checkbox.component';
+
+
 
 
 @NgModule({
@@ -21,7 +24,8 @@ import { ButtonComponent } from './controls/button/button.component';
     CustomTextboxComponent,
     RadioButtonComponent,
     DropdownComponent,
-    ButtonComponent
+    ButtonComponent,
+    checkboxComponent
   ],
   imports: [
   BrowserModule,
@@ -36,7 +40,8 @@ import { ButtonComponent } from './controls/button/button.component';
     CustomTextboxComponent,
     RadioButtonComponent,
     DropdownComponent,
-    ButtonComponent
+    ButtonComponent,
+    checkboxComponent
   ],
 })
 export class CoreModule { }
