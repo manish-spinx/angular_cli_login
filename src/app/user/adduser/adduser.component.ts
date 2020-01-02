@@ -16,6 +16,7 @@ export class AdduserComponent implements OnInit {
   submit_validaiton_flag: boolean = false;
   team:any;
   eduFormArray:string[]=[]; 
+  team_dataFormArray:string[]=[]; 
 
   drop_down_list:any;
   
@@ -56,8 +57,9 @@ export class AdduserComponent implements OnInit {
       gender:["", Validators.required],
       address:[null],
       country:["", Validators.required],
-      team:[[],Validators.required],
+      //team:[[],Validators.required],
       edu_data:[],
+      team_data:[],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
@@ -80,19 +82,20 @@ export class AdduserComponent implements OnInit {
   onChange_team_selection(e:any)
   {
 
-     console.log(e);
+     //console.log(e.target.id);
 
-    //   var options = e.target.options;
+      var options = e.target.options;
 
-    // var value = [];
-    // for (var i = 0, l = options.length; i < l; i++) {
-    //   if (options[i].selected) {
-    //     value.push(options[i].value);
-    //   }
-    // }
+    this.team_dataFormArray = [];
+    for (var i = 0, l = options.length; i < l; i++) 
+    {
+      if (options[i].selected) {
+        this.team_dataFormArray.push(options[i].value);
+      }
+    }
     
-    // console.log('----------value--------');
-    // console.log(value);
+    console.log('----------value--------');
+    console.log(this.team_dataFormArray);
 
   }
 
@@ -107,8 +110,7 @@ export class AdduserComponent implements OnInit {
           if (index !== -1) {
               this.eduFormArray.splice(index, 1);
           }
-        }
-        console.log(this.eduFormArray);
+        }        
   }
 
   onCancel()

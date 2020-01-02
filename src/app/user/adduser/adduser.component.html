@@ -3,22 +3,6 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
     <div class="container">
 
-
-     <spinx-checkbox
-           label="Education List"
-           [record_list]="education_list"
-           [selected_record_list]="eduFormArray"
-           formArrayName="edu_data"
-           (change)="get_checkbox_value($event)"
-           [submit_validaiton_flag]="submit_validaiton_flag"
-           name="education_name"
-    ></spinx-checkbox>
-    
-      <!-- <div *ngFor="let item of education_list;let i=index">
-        <input type="checkbox" (change)="get_checkbox_value($event)" formArrayName="edu_data" id={{item.id}} name="education"> {{item.name}}<br>
-     </div> -->
-
-
     <spinx-dropdown
        id="country"
        label="Country"
@@ -42,10 +26,30 @@
        (change)="onChange_team_selection($event)"
     ></spinx-dropdown> -->
 
+ <spinx-checkbox
+    label="Education List"
+    [record_list]="education_list"
+    [selected_record_list]="eduFormArray"
+    formArrayName="edu_data"
+    (change)="get_checkbox_value($event)"
+    [submit_validaiton_flag]="submit_validaiton_flag"
+    name="education_name"
+></spinx-checkbox> 
+
+<spinx-multidropdown    
+    label="Team"
+    formArrayName="team_data"
+    [record_list]="team_list"
+    dropdown_label="Select Team List"
+    (change)="onChange_team_selection($event)"
+> 
+</spinx-multidropdown>
+
+
     <!-- <div class="form-group row">
         <label class="col-md-2 col-form-label">chk</label>
           <div class="col-md-4">
-            <select class="form-control" id="team" name="team" multiple (change)="onChange_team_selection($event)">
+            <select class="form-control" id="team_data" name="team_data" formArrayName="team_data" multiple (change)="onChange_team_selection($event)">
                 <option value="undefined" selected>Select Puzzle Category</option>  
                  <option *ngFor="let aa of team_list" value="{{aa.id}}">{{aa.name}}</option>
             </select>
@@ -155,6 +159,20 @@
         [submit_validaiton_flag]="submit_validaiton_flag"
 	    ngModel>
     </app-custom-textbox> 
+
+    <spinx-checkbox
+            label="Education List"
+            [record_list]="education_list"
+            [selected_record_list]="eduFormArray"
+            formArrayName="edu_data"
+            (change)="get_checkbox_value($event)"
+            [submit_validaiton_flag]="submit_validaiton_flag"
+            name="education_name"
+        ></spinx-checkbox>
+
+<!-- <div *ngFor="let item of education_list;let i=index">
+ <input type="checkbox" (change)="get_checkbox_value($event)" formArrayName="edu_data" id={{item.id}} name="education"> {{item.name}}<br>
+</div> -->
 
        
         

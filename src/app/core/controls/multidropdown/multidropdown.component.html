@@ -1,0 +1,9 @@
+<div class="form-group row">
+    <label class="col-md-2 col-form-label">{{label}}</label>
+      <div class="col-md-4">
+        <select class="form-control" id="team_data" name="team_data" multiple (change)="onClickButton($event)">
+            <option value="undefined" selected>{{dropdown_label}}</option>  
+             <option *ngFor="let r of record_list" value="{{r.id}}">{{r.name}}</option>
+        </select>
+      </div> 
+  </div>

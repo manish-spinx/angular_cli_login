@@ -12,8 +12,7 @@ import { RadioButtonComponent } from './controls/radioButton/radiobutton.compone
 import { DropdownComponent } from './controls/dropdown/dropdown.component';
 import { ButtonComponent } from './controls/button/button.component';
 import { checkboxComponent } from './controls/checkbox/checkbox.component';
-
-
+import { MultidropdownComponent } from './controls/multidropdown/multidropdown.component';
 
 
 @NgModule({
@@ -25,7 +24,8 @@ import { checkboxComponent } from './controls/checkbox/checkbox.component';
     RadioButtonComponent,
     DropdownComponent,
     ButtonComponent,
-    checkboxComponent
+    checkboxComponent,
+    MultidropdownComponent
   ],
   imports: [
   BrowserModule,
@@ -41,7 +41,8 @@ import { checkboxComponent } from './controls/checkbox/checkbox.component';
     RadioButtonComponent,
     DropdownComponent,
     ButtonComponent,
-    checkboxComponent
+    checkboxComponent,
+    MultidropdownComponent
   ],
 })
 export class CoreModule { }
