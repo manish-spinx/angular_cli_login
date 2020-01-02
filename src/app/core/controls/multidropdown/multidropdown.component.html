@@ -1,28 +1,12 @@
-<!-- <div class="form-group row">
-    <label class="col-md-2 col-form-label">{{label}}</label>
-      <div class="col-md-4">
-        <select class="form-control" id="team_data" name="team_data" multiple (change)="onClickButton($event)">
-            <option value="undefined" selected>{{dropdown_label}}</option>  
-             <option *ngFor="let r of record_list" value="{{r.id}}">{{r.name}}</option>
-        </select>
-      </div> 
-      <small class="text-danger" *ngIf="submit_validaiton_flag && selected_record_list.length<=0">
-        {{label}} Field is Required
-    </small>
-  </div> -->
-
-
   <div class="form-group">
     <div class="input-wrapper" [class.required]="required" >        
         <label [for]="id">{{label}}</label>
         <select class="form-control" [id]="id" [name]="name" multiple (change)="onClickButton($event)">
             <option value="undefined" selected>{{dropdown_label}}</option>  
-             <option *ngFor="let r of record_list" value="{{r.id}}">{{r.name}}</option>
+             <option *ngFor="let r of record_list" value="{{r.id}}" [selected]="r.status" >{{r.name}}</option>
         </select>
-
         <small class="text-danger" *ngIf="submit_validaiton_flag && selected_record_list.length<=0">
             {{label}} Field is Required
         </small>
-        
       </div>      
   </div>

@@ -33,7 +33,7 @@ export class AdduserComponent implements OnInit {
 
   public team_list = [
     { id:'1',name: 'India'},
-    { id:'2',name: 'Us' },
+    { id:'2',name: 'Us'},
     { id:'3',name: 'Russian' },
   ];
 
@@ -68,11 +68,6 @@ export class AdduserComponent implements OnInit {
                      SpinxValidAlphabet('company')
                     ]
     });
-
-
-   
-    
-
 
    }
 
