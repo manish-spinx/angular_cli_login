@@ -81,11 +81,7 @@ export class AdduserComponent implements OnInit {
 
   onChange_team_selection(e:any)
   {
-
-     //console.log(e.target.id);
-
-      var options = e.target.options;
-
+    var options = e.target.options;
     this.team_dataFormArray = [];
     for (var i = 0, l = options.length; i < l; i++) 
     {
@@ -93,10 +89,6 @@ export class AdduserComponent implements OnInit {
         this.team_dataFormArray.push(options[i].value);
       }
     }
-    
-    console.log('----------value--------');
-    console.log(this.team_dataFormArray);
-
   }
 
   get_checkbox_value(e:any)

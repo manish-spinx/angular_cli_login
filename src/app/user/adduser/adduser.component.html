@@ -26,7 +26,7 @@
        (change)="onChange_team_selection($event)"
     ></spinx-dropdown> -->
 
- <spinx-checkbox
+ <!-- <spinx-checkbox
     label="Education List"
     [record_list]="education_list"
     [selected_record_list]="eduFormArray"
@@ -34,16 +34,23 @@
     (change)="get_checkbox_value($event)"
     [submit_validaiton_flag]="submit_validaiton_flag"
     name="education_name"
-></spinx-checkbox> 
+></spinx-checkbox>  -->
 
-<spinx-multidropdown    
+ <spinx-multidropdown    
     label="Team"
+    name="team_name"
+    id="team_name"
     formArrayName="team_data"
     [record_list]="team_list"
+    [selected_record_list]="team_dataFormArray"
     dropdown_label="Select Team List"
     (change)="onChange_team_selection($event)"
+    [submit_validaiton_flag]="submit_validaiton_flag"
 > 
 </spinx-multidropdown>
+
+
+
 
 
     <!-- <div class="form-group row">
