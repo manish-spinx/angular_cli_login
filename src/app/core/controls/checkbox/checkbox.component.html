@@ -1,1 +1,8 @@
-<p>Hello</p>
+  {{label}} {{selected_record_list.length}}
+ <div *ngFor="let item of record_list;let i=index">
+    <input type="checkbox" id={{item.id}} [name]="name"> {{item.name}}<br>
+ </div>
+
+ <small class="text-danger" *ngIf="submit_validaiton_flag && selected_record_list.length<=0">
+    {{label}} Field is Required
+  </small>

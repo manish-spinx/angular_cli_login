@@ -4,11 +4,21 @@
     <div class="container">
 
 
-    <spinx-checkbox></spinx-checkbox>
+     <spinx-checkbox
+           label="Education List"
+           [record_list]="education_list"
+           [selected_record_list]="eduFormArray"
+           formArrayName="edu_data"
+           (change)="get_checkbox_value($event)"
+           [submit_validaiton_flag]="submit_validaiton_flag"
+           name="education_name"
+    ></spinx-checkbox>
     
-     <div *ngFor="let item of education_list;let i=index">
+     <!-- <div *ngFor="let item of education_list;let i=index">
         <input type="checkbox" (change)="get_checkbox_value($event)" formArrayName="edu_data" id={{item.id}} name="education"> {{item.name}}<br>
-     </div>
+     </div> -->
+
+
 
      <br/>
      <br/>
