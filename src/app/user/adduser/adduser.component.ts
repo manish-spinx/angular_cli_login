@@ -41,7 +41,7 @@ export class AdduserComponent implements OnInit {
     { id:'1',name: 'B.E.IT'},
     { id:'2',name: 'MCA' },
     { id:'3',name: 'BCA' },
-    { id:'4',name: 'Diploma' },
+    { id:'4',name: 'Diploma'},
   ];
 
   
