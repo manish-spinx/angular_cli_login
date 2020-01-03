@@ -81,7 +81,7 @@ export class AdduserComponent implements OnInit {
       //team:[[],Validators.required],
       edu_data:[],
       team_data:[],
-      //imageInput:["", Validators.required],
+      user_profile_data:[],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
