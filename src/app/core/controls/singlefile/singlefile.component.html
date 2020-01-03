@@ -1,0 +1,14 @@
+<div class="form-group row">
+    <label class="col-md-3 col-form-label" [for]="id">{{label}}</label>
+    <div class="col-md-9">
+      <input type="file" [id]="id" [name]="name" (change)="onClickButton($event)">
+    </div>
+     
+    <small class="text-danger" *ngIf="submit_validaiton_flag && selected_record_list.length<=0">
+        {{label}} Field is Required
+    </small>
+
+     <small class="text-danger" *ngIf="selected_record_list.length>=0 && image_valdaiton">
+        {{label}} File Is Not Allowed        
+      </small>  
+  </div>

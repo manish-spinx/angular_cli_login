@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+
+// validaition helper
 import { SpinxValidMatch } from 'src/app/_helpers/spinx-valid-match.validator';
 import { SpinxValidNumeric } from 'src/app/_helpers/spinx-valid-numeric.validator';
 import { SpinxValidAlphabet } from 'src/app/_helpers/spinx-valid-alphabet.validator';
+//import { SpinxValidImage } from 'src/app/_helpers/spinx-valid-image.validator';
+
 
 
 @Component({
@@ -17,8 +21,12 @@ export class AdduserComponent implements OnInit {
   team:any;
   eduFormArray:string[]=[]; 
   team_dataFormArray:string[]=[]; 
-
   drop_down_list:any;
+
+  custom_image_valdaiton:string="";
+  image_valdaiton:boolean = false;
+  public totalfiles: Array<File> =[];
+
   
   public genders = [
     { id:'1',value: 'F', display: 'Female'},
@@ -45,6 +53,19 @@ export class AdduserComponent implements OnInit {
     { id:'4',name: 'Diploma'},
   ];
 
+
+  public units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+  niceBytes(x){
+    if(x === 1) return '1 byte';  
+    let l = 0, n = parseInt(x, 10) || 0;  
+    while(n >= 1024 && ++l){
+        n = n/1024;
+    }
+
+     // + ' ' + this.units[l]
+    return(n.toFixed(n < 10 && l > 0 ? 1 : 0) + ' ' + this.units[l]);
+  }
   
 
   constructor( private fb: FormBuilder) {
@@ -60,18 +81,50 @@ export class AdduserComponent implements OnInit {
       //team:[[],Validators.required],
       edu_data:[],
       team_data:[],
+      //imageInput:["", Validators.required],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
                      SpinxValidMatch('password', 'cnfpassword'),
                      SpinxValidNumeric('mobile'),
-                     SpinxValidAlphabet('company')
+                     SpinxValidAlphabet('company'),
+                     //SpinxValidImage('imageInput',this.totalfiles),
                     ]
     });
 
    }
 
   ngOnInit() {
+  }
+
+
+  handleFileInput(e:any)
+  {
+    console.log('<----------------check file input----->');     
+
+     if(e.target.files)
+     {
+      const file: File = e.target.files[0];
+      var allow_file_types = ['png','jpeg','pdf','jpg'];      
+      var ext = file.name.substring(file.name.lastIndexOf('.') + 1);
+      //console.log('chk file size : --> ',this.niceBytes(file.size)); 
+
+        this.totalfiles = e.target.files;
+      
+        if(!allow_file_types.includes(ext))
+        {
+            this.image_valdaiton = true;           
+        }
+        else{
+           this.image_valdaiton = false;           
+        }
+     }
+  }
+
+  onChange_country_selection(index:any)
+  {
+     console.log('--------simple----single-----dropdown--------');
+     console.log(index);
   }
 
   onChange_team_selection(e:any)

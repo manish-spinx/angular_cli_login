@@ -9,7 +9,7 @@ export function SpinxValidMatch(controlName: string, matchingControlName: string
         }
 
         if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ spinxvalidMatch: true });
+            matchingControl.setErrors({ spinxvalidMatch: 'Please Password Matched !' });
         } else {
             matchingControl.setErrors(null);
         }

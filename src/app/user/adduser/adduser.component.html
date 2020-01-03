@@ -3,6 +3,30 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
     <div class="container">
 
+        <spinx-singlefile
+            id="file-input-spinx"
+            name="file-input-spinx"
+            [selected_record_list]="totalfiles"
+            (change)="handleFileInput($event)"
+            label="User Profile"
+            [submit_validaiton_flag]="submit_validaiton_flag"
+            [image_valdaiton]="image_valdaiton"
+        >
+
+        </spinx-singlefile>
+            
+
+        <!-- <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="file-input">File input</label>
+            <div class="col-md-9">
+              <input type="file" id="file-input" name="file-input" (change)="handleFileInput($event)">
+            </div>
+            <small class="text-danger" *ngIf="custom_image_valdaiton!=''">
+                {{custom_image_valdaiton}}
+              </small> 
+          </div> -->
+
+
     <spinx-dropdown
        id="country"
        label="Country"
@@ -11,30 +35,8 @@
        formControlName="country"
        [required]="true"  
        [submit_validaiton_flag]="submit_validaiton_flag"
-       (change)="onChange_team_selection($event.target.value)"
+       (change)="onChange_country_selection($event.target.value)"
     ></spinx-dropdown>
-
-    <!-- <spinx-dropdown
-       id="team"
-       label="Team Location"
-       name="team"
-       [record_list]="team_list"
-       formControlName="team"
-       [required]="true"  
-       [multiple]="true"
-       [submit_validaiton_flag]="submit_validaiton_flag"
-       (change)="onChange_team_selection($event)"
-    ></spinx-dropdown> -->
-
- <!-- <spinx-checkbox
-    label="Education List"
-    [record_list]="education_list"
-    [selected_record_list]="eduFormArray"
-    formArrayName="edu_data"
-    (change)="get_checkbox_value($event)"
-    [submit_validaiton_flag]="submit_validaiton_flag"
-    name="education_name"
-></spinx-checkbox>  -->
 
  <spinx-multidropdown    
     label="Team"
@@ -48,9 +50,6 @@
     [submit_validaiton_flag]="submit_validaiton_flag"
 > 
 </spinx-multidropdown>
-
-
-
 
 
     <!-- <div class="form-group row">

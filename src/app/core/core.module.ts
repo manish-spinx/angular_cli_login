@@ -13,6 +13,8 @@ import { DropdownComponent } from './controls/dropdown/dropdown.component';
 import { ButtonComponent } from './controls/button/button.component';
 import { checkboxComponent } from './controls/checkbox/checkbox.component';
 import { MultidropdownComponent } from './controls/multidropdown/multidropdown.component';
+import { SinglefileComponent } from './controls/singlefile/singlefile.component';
+
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { MultidropdownComponent } from './controls/multidropdown/multidropdown.c
     DropdownComponent,
     ButtonComponent,
     checkboxComponent,
-    MultidropdownComponent
+    MultidropdownComponent,
+    SinglefileComponent
   ],
   imports: [
   BrowserModule,
@@ -42,7 +45,8 @@ import { MultidropdownComponent } from './controls/multidropdown/multidropdown.c
     DropdownComponent,
     ButtonComponent,
     checkboxComponent,
-    MultidropdownComponent
+    MultidropdownComponent,
+    SinglefileComponent
   ],
 })
 export class CoreModule { }

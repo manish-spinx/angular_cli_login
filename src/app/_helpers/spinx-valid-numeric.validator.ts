@@ -13,7 +13,7 @@ export function SpinxValidNumeric(controlName: string) {
             control.setErrors(null);
          }
          else{
-            control.setErrors({ spinxvalidNumeric: true });
+            control.setErrors({ spinxvalidNumeric: 'Please Enter Only Numeric character' });
          }
 
     }
