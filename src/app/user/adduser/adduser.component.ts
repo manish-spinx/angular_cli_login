@@ -26,7 +26,7 @@ export class AdduserComponent implements OnInit {
   custom_image_valdaiton:string="";
   image_valdaiton:boolean = false;
   public totalfiles: Array<File> =[];
-
+  public totalfiles_name:any;
   
   public genders = [
     { id:'1',value: 'F', display: 'Female'},
@@ -44,7 +44,6 @@ export class AdduserComponent implements OnInit {
     { id:'2',name: 'Us'},
     { id:'3',name: 'Russian' },
   ];
-
 
   public education_list = [
     { id:'1',name: 'B.E.IT'},
@@ -100,22 +99,23 @@ export class AdduserComponent implements OnInit {
 
   handleFileInput(e:any)
   {
-    console.log('<----------------check file input----->');     
 
      if(e.target.files)
      {
       const file: File = e.target.files[0];
+
       var allow_file_types = ['png','jpeg','pdf','jpg'];      
       var ext = file.name.substring(file.name.lastIndexOf('.') + 1);
       //console.log('chk file size : --> ',this.niceBytes(file.size)); 
 
-        this.totalfiles = e.target.files;
       
         if(!allow_file_types.includes(ext))
         {
             this.image_valdaiton = true;           
         }
         else{
+
+           this.totalfiles = e.target.files;
            this.image_valdaiton = false;           
         }
      }
@@ -167,12 +167,10 @@ export class AdduserComponent implements OnInit {
     //   Name: this.Name
     // });
 
-    console.log('need to check record....');
-
-    console.log(this.registerForm.value.country);
+    console.log('need to check record....'+this.image_valdaiton);
 
 
-    if(this.registerForm.valid) 
+    if(this.registerForm.valid && this.eduFormArray.length>0 && this.team_dataFormArray.length>0 && this.totalfiles.length>0) 
     {
         console.log('form validaiton yes');
     }
