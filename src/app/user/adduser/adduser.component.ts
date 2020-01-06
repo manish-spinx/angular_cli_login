@@ -5,9 +5,12 @@ import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@ang
 import { SpinxValidMatch } from 'src/app/_helpers/spinx-valid-match.validator';
 import { SpinxValidNumeric } from 'src/app/_helpers/spinx-valid-numeric.validator';
 import { SpinxValidAlphabet } from 'src/app/_helpers/spinx-valid-alphabet.validator';
-//import { SpinxValidImage } from 'src/app/_helpers/spinx-valid-image.validator';
 
+// user service
+import { UserService } from '../services/user.service';
 
+// model
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-adduser',
@@ -15,6 +18,9 @@ import { SpinxValidAlphabet } from 'src/app/_helpers/spinx-valid-alphabet.valida
   styleUrls: ['./adduser.component.css']
 })
 export class AdduserComponent implements OnInit {
+
+  user_model = new User();
+
   registerForm: FormGroup;
   isSubmitted: boolean = false;
   submit_validaiton_flag: boolean = false;
@@ -67,7 +73,11 @@ export class AdduserComponent implements OnInit {
   }
   
 
-  constructor( private fb: FormBuilder) {
+  constructor( 
+                private fb: FormBuilder,
+                private _uservice:UserService,
+              ) 
+    {
     this.registerForm = fb.group({
       password: ["", Validators.required],
       cnfpassword: ["", Validators.required],
@@ -173,6 +183,11 @@ export class AdduserComponent implements OnInit {
     if(this.registerForm.valid && this.eduFormArray.length>0 && this.team_dataFormArray.length>0 && this.totalfiles.length>0) 
     {
         console.log('form validaiton yes');
+           
+        this.user_model.Name = this.registerForm.value.Name;
+        this.user_model.email = this.registerForm.value.email;
+
+          this._uservice.user_post(this.user_model);
     }
     else{
       console.log('form validaiton no......');

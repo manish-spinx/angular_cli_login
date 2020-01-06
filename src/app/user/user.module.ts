@@ -9,6 +9,9 @@ import { CoreModule } from '../core/core.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AdduserComponent } from './adduser/adduser.component';
 
+//service
+import { UserService } from './services/user.service';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { AdduserComponent } from './adduser/adduser.component';
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
-  ]
+  ],
+  providers: [
+    UserService
+  ],
 })
 export class UserModule { }

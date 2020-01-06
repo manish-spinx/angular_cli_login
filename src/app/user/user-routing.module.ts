@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { AdduserComponent } from './adduser/adduser.component';
+import { AuthGuard } from '../services/authGuard';
+
+
 
 const routes: Routes = [
   {
-    path: 'user', children: [
+    //canActivate: [AuthGuard],
+    path: 'user',children: [
       { path: 'profile', component: ProfileComponent},
       { path: 'add', component: AdduserComponent},
     ]
