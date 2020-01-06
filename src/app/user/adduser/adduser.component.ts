@@ -17,6 +17,7 @@ import { User } from '../model/user';
   templateUrl: './adduser.component.html',
   styleUrls: ['./adduser.component.css']
 })
+
 export class AdduserComponent implements OnInit {
 
   user_model = new User();
@@ -172,30 +173,22 @@ export class AdduserComponent implements OnInit {
   {
     this.isSubmitted = true;
 
-    // this.registerForm.patchValue({
-    //   emailAddress: this.emailAddress,
-    //   Name: this.Name
-    // });
-
-    console.log('need to check record....'+this.image_valdaiton);
-
-
     if(this.registerForm.valid && this.eduFormArray.length>0 && this.team_dataFormArray.length>0 && this.totalfiles.length>0) 
     {
-        console.log('form validaiton yes');
+        //console.log('form validaiton yes');
            
         this.user_model.Name = this.registerForm.value.Name;
         this.user_model.email = this.registerForm.value.email;
+        this.user_model.phone = this.registerForm.value.mobile;
+        this._uservice.user_post(this.user_model);
 
-          this._uservice.user_post(this.user_model);
     }
     else{
-      console.log('form validaiton no......');
 
-      this.isSubmitted = false;
-      this.submit_validaiton_flag=true;
-
-      return;
+        console.log('form validaiton no......');
+        this.isSubmitted = false;
+        this.submit_validaiton_flag=true;
+        return;
       
     }
 
@@ -205,7 +198,6 @@ export class AdduserComponent implements OnInit {
   // get_data(value)
   // {
   //   console.log('aa' +value);
-
   // }
 
 

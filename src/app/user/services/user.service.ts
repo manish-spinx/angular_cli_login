@@ -16,21 +16,9 @@ export class UserService {
 
     user_post(user: User)
     {
-          console.log('checked user----> service : ');
+          console.log(' Now user service api calling..');
           console.log(user);
-
-        //return this.http.post('http://aaaa.ggfsd. com',user);
     }
     
-
-
-// past_data_to_server(api_name, params_data)  
-// {  
-//         return this.customHttp.post(api_name, params_data)
-//         .map(resp => {
-//             return resp;
-//         })
-
-// }    
 
 }
