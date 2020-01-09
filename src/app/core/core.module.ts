@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
+// Date Picker Component
+//import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 // Custom Component 
 import { PasswordComponent } from './controls/password/password.component';
 import { TextareaComponent } from './controls/textarea/textarea.component';
@@ -14,6 +17,7 @@ import { ButtonComponent } from './controls/button/button.component';
 import { checkboxComponent } from './controls/checkbox/checkbox.component';
 import { MultidropdownComponent } from './controls/multidropdown/multidropdown.component';
 import { SinglefileComponent } from './controls/singlefile/singlefile.component';
+//import { DatepickerComponent } from './controls/datepicker/datepicker.component';
 
 
 
@@ -28,13 +32,15 @@ import { SinglefileComponent } from './controls/singlefile/singlefile.component'
     ButtonComponent,
     checkboxComponent,
     MultidropdownComponent,
-    SinglefileComponent
+    SinglefileComponent,
   ],
   imports: [
   BrowserModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //OwlDateTimeModule,
+    //OwlNativeDateTimeModule
   ],
   exports: [
     PasswordComponent,
@@ -46,7 +52,7 @@ import { SinglefileComponent } from './controls/singlefile/singlefile.component'
     ButtonComponent,
     checkboxComponent,
     MultidropdownComponent,
-    SinglefileComponent
+    SinglefileComponent,
   ],
 })
 export class CoreModule { }

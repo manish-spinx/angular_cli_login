@@ -92,6 +92,8 @@ export class AdduserComponent implements OnInit {
       edu_data:[],
       team_data:[],
       user_profile_data:[],
+      dateofjoin:[null],
+      dateofjoin2:[null],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
@@ -173,6 +175,10 @@ export class AdduserComponent implements OnInit {
   {
     this.isSubmitted = true;
 
+    console.log('------------ss---------------1------');
+    console.log(this.registerForm.value.dateofjoin);
+    
+
     if(this.registerForm.valid && this.eduFormArray.length>0 && this.team_dataFormArray.length>0 && this.totalfiles.length>0) 
     {
         //console.log('form validaiton yes');
@@ -181,7 +187,6 @@ export class AdduserComponent implements OnInit {
         this.user_model.email = this.registerForm.value.email;
         this.user_model.phone = this.registerForm.value.mobile;
         this._uservice.user_post(this.user_model);
-
     }
     else{
 

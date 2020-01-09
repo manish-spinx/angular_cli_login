@@ -2,8 +2,26 @@
 <!-- #form="ngForm" -->
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
     <div class="container">
-   
 
+
+<div class="form-group">
+	<div class="input-wrapper" [class.required]="required">
+    <label for="datepicker">Date Of Joining</label>
+
+    <input [owlDateTimeTrigger]="dt1" 
+            class="form-control" 
+            name="datepicker"
+            id="datepicker"
+            [owlDateTime]="dt1" 
+            placeholder="Enter ...."
+            formControlName="dateofjoin"
+            />
+    <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time> 
+      
+	  </div>
+  </div>
+
+   
     <app-custom-textbox
         name="Name"
         id="Name"
@@ -19,7 +37,6 @@
     </app-custom-textbox>
 
       
-
   <app-custom-textbox
         name="email"
         id="email"
@@ -34,7 +51,7 @@
     
      <!-- pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"   -->
 
-     <app-custom-textbox
+    <app-custom-textbox
         name="password"
         id="password"
         type="password"
