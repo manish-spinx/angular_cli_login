@@ -18,6 +18,8 @@ import { UserService } from './services/user.service';
 // Date Picker
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
+import {DpDatePickerModule} from 'ng2-date-picker';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     ReactiveFormsModule,
     CoreModule,
     OwlDateTimeModule,
-   OwlNativeDateTimeModule
+   OwlNativeDateTimeModule,
+   DpDatePickerModule
 
   ],
   providers: [

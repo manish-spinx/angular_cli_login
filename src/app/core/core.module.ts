@@ -3,8 +3,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
+import {MatInputModule,MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+
 // Date Picker Component
 //import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
+// New Date Picker Component
+import {DpDatePickerModule} from 'ng2-date-picker';
 
 // Custom Component 
 import { PasswordComponent } from './controls/password/password.component';
@@ -18,6 +23,12 @@ import { checkboxComponent } from './controls/checkbox/checkbox.component';
 import { MultidropdownComponent } from './controls/multidropdown/multidropdown.component';
 import { SinglefileComponent } from './controls/singlefile/singlefile.component';
 //import { DatepickerComponent } from './controls/datepicker/datepicker.component';
+
+import { DatePickerComponent } from './controls/date-picker/date-picker.component';
+
+
+
+
 
 
 
@@ -33,14 +44,21 @@ import { SinglefileComponent } from './controls/singlefile/singlefile.component'
     checkboxComponent,
     MultidropdownComponent,
     SinglefileComponent,
+    //DatepickerComponent,
+    DatePickerComponent,
   ],
   imports: [
   BrowserModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    DpDatePickerModule,
     //OwlDateTimeModule,
-    //OwlNativeDateTimeModule
+    //OwlNativeDateTimeModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    
   ],
   exports: [
     PasswordComponent,
@@ -53,6 +71,9 @@ import { SinglefileComponent } from './controls/singlefile/singlefile.component'
     checkboxComponent,
     MultidropdownComponent,
     SinglefileComponent,
+    //DatepickerComponent,
+    DatePickerComponent,
+    
   ],
 })
 export class CoreModule { }

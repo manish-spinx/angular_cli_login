@@ -4,7 +4,23 @@
     <div class="container">
 
 
-<div class="form-group">
+    <spinx-date-picker  
+        placeholder="Enter The First Date"  
+        formControlName="dateofjoin" 
+        format="YYYY/MM/DD HH:mm:ss"
+    >
+    </spinx-date-picker> 
+
+    <!-- <dp-date-picker formControlName="dateofjoin" [config]="datePickerConfig"></dp-date-picker> -->
+
+    <!-- <spinx-datepicker     
+    (change)="onChange_country_selection($event.target.value)"
+    formControlName="dateofjoin"
+    ngModel
+    >
+</spinx-datepicker> -->
+        
+<!-- <div class="form-group">
 	<div class="input-wrapper" [class.required]="required">
     <label for="datepicker">Date Of Joining</label>
 
@@ -19,7 +35,7 @@
     <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time> 
       
 	  </div>
-  </div>
+  </div> -->
 
    
     <app-custom-textbox
