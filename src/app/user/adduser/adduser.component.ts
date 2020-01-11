@@ -198,7 +198,7 @@ export class AdduserComponent implements OnInit {
         main_form.append('name',this.registerForm.value.name);
         main_form.append('email',this.registerForm.value.email);
         main_form.append('password',this.registerForm.value.password);
-        main_form.append('company_name',this.registerForm.value.company_name);
+        main_form.append('company_name',this.registerForm.value.company);
         main_form.append('mobile',this.registerForm.value.mobile);
         main_form.append('gender',this.registerForm.value.gender);
         main_form.append('address',this.registerForm.value.address);
