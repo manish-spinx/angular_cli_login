@@ -35,47 +35,32 @@ export class DatePickerComponent implements ControlValueAccessor {
   @Input() private format = 'YYYY/MM/DD HH:mm:ss';
 
   get dateValue() {
-
-    console.log('-----get-----dateValue-----------------');
-
     return moment(this._dateValue, this.format);
   }
 
   set dateValue(val) {
-
-    console.log('----set------dateValue-----------------');
-
     this._dateValue = moment(val).format(this.format);
     this.propagateChange(this._dateValue);
   }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log('----------addEvent-----------------');
     this.dateValue = moment(event.value, this.format);
   }
 
   displayDateValue(date) {
-    console.log('----------displayDateValue-----------------');
-    console.log(moment(date, this.format));
     return moment(date, this.format);
   }
 
   writeValue(value: any) {
-
-    console.log('----------writeValue-----------------');
-
     if (value !== undefined) {
       this.dateValue = moment(value, this.format);
     }
   }
   propagateChange = (_: any) => {
-    console.log('----------propagateChange-----------------');
+    
   };
 
   registerOnChange(fn) {
-
-    console.log('----------registerOnChange-----------------');
-
     this.propagateChange = fn;
   }
 

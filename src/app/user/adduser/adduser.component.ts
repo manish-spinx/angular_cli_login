@@ -84,7 +84,7 @@ export class AdduserComponent implements OnInit {
       cnfpassword: ["", Validators.required],
       mobile:["", Validators.required],
       company:["", Validators.required],      
-      Name:["", Validators.required],
+      name:["", Validators.required],
       gender:["", Validators.required],
       address:[null],
       country:["", Validators.required],
@@ -137,7 +137,9 @@ export class AdduserComponent implements OnInit {
   onChange_country_selection(index:any)
   {
      console.log('--------simple----single-----dropdown--------');
-     console.log(index);
+     //console.log(index);
+     //console.log(this.registerForm.value.country);
+       
   }
 
   onChange_team_selection(e:any)
@@ -173,22 +175,29 @@ export class AdduserComponent implements OnInit {
 
   onSubmit()
   {
-    this.isSubmitted = true;
-
-    //console.log('=============Name========registerForm=============');
-    //console.log(this.registerForm.value.Name);
-    console.log('------------ss---------------1------');
-    console.log(this.registerForm.value.dateofjoin);
-    
-
+      this.isSubmitted = true;
+      
     if(this.registerForm.valid && this.eduFormArray.length>0 && this.team_dataFormArray.length>0 && this.totalfiles.length>0) 
     {
-        //console.log('form validaiton yes');
            
-        this.user_model.Name = this.registerForm.value.Name;
+        this.user_model.name = this.registerForm.value.name;
         this.user_model.email = this.registerForm.value.email;
-        this.user_model.phone = this.registerForm.value.mobile;
-        this._uservice.user_post(this.user_model);
+        this.user_model.password = this.registerForm.value.password;
+        this.user_model.company_name = this.registerForm.value.company;
+        this.user_model.mobile = this.registerForm.value.mobile;
+        this.user_model.gender = this.registerForm.value.gender;
+        this.user_model.address = this.registerForm.value.address;
+        this.user_model.country = this.registerForm.value.country;
+        this.user_model.dateofjoin = this.registerForm.value.dateofjoin;
+        this.user_model.edu_list = this.eduFormArray;
+        this.user_model.user_profile = this.totalfiles;
+        this.user_model.team = this.team_dataFormArray;
+
+
+        console.log('-----------------chk user data------>');
+        console.log(this.user_model);       
+        
+        //this._uservice.user_post(this.user_model);
     }
     else{
 

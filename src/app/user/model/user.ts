@@ -1,9 +1,17 @@
 export class User{
     id: number;
-    Name: string;
+    name: string;
     email: string;
-    phone: number;
-    city: string;
+    password:string;
+    company_name:string;
+    edu_list:any;    
+    user_profile:any;
+    mobile: number;
+    gender:string;
+    address:string;
+    country:string;
+    team:any;
+    dateofjoin: string;
 
     // constructor(userResponse:any)
     // {

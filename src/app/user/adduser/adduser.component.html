@@ -3,57 +3,22 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
     <div class="container">
 
-
-    <spinx-date-picker  
-        placeholder="Enter The First Date"  
-        formControlName="dateofjoin" 
-        format="YYYY/MM/DD HH:mm:ss"
-    >
-    </spinx-date-picker> 
-
-    <!-- <dp-date-picker formControlName="dateofjoin" [config]="datePickerConfig"></dp-date-picker> -->
-
-    <!-- <spinx-datepicker     
-    (change)="onChange_country_selection($event.target.value)"
-    formControlName="dateofjoin"
-    ngModel
-    >
-</spinx-datepicker> -->
-        
-<!-- <div class="form-group">
-	<div class="input-wrapper" [class.required]="required">
-    <label for="datepicker">Date Of Joining</label>
-
-    <input [owlDateTimeTrigger]="dt1" 
-            class="form-control" 
-            name="datepicker"
-            id="datepicker"
-            [owlDateTime]="dt1" 
-            placeholder="Enter ...."
-            formControlName="dateofjoin"
-            />
-    <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time> 
-      
-	  </div>
-  </div> -->
-
-   
     <app-custom-textbox
-        name="Name"
-        id="Name"
+        name="name"
+        id="name"
         type="text"
 		label="User Name"
 		placeholder="Please enter your user name"
         minlength="10"
         maxlength="15"
         [required]="true"
-        formControlName="Name"
+        formControlName="name"
         [submit_validaiton_flag]="submit_validaiton_flag"  
 	    ngModel>
     </app-custom-textbox>
 
       
-  <app-custom-textbox
+    <app-custom-textbox
         name="email"
         id="email"
         type="text"
@@ -128,54 +93,54 @@
             (change)="get_checkbox_value($event)"
             [submit_validaiton_flag]="submit_validaiton_flag"
             name="education_name"
-        ></spinx-checkbox>
+    ></spinx-checkbox>
 
 
-        <spinx-radio 
-            label="Gender"
-            id="gender"
-            [genders_custom]="genders" 
-            formControlName="gender" 
-            [required]="true"  
-            name="gender"
-            [submit_validaiton_flag]="submit_validaiton_flag" 
-            ngModel>
-        </spinx-radio> 
-        
-        <spinx-textarea
-            rows="5"
-            placeholder="Enter Your Address .."
-            formControlName="address" 
-            id="address"
-            label="Address"
-         >
-        </spinx-textarea>
-
-
-         <spinx-singlefile
-            id="file-input-spinx"
-            name="file-input-spinx"
-            [selected_record_list]="totalfiles"
-            (change)="handleFileInput($event)"
-            label="User Profile"
-            formArrayName="user_profile_data"
-            [submit_validaiton_flag]="submit_validaiton_flag"
-            [image_valdaiton]="image_valdaiton"
-        >
-        </spinx-singlefile>
-
-
-     <spinx-dropdown
-        id="country"
-        label="Country"
-        name="country"
-        [record_list]="country_list"
-        formControlName="country"
+    <spinx-radio 
+        label="Gender"
+        id="gender"
+        [genders_custom]="genders" 
+        formControlName="gender" 
         [required]="true"  
-        [submit_validaiton_flag]="submit_validaiton_flag"
-        (change)="onChange_country_selection($event.target.value)"
-    >
-    </spinx-dropdown>
+        name="gender"
+        [submit_validaiton_flag]="submit_validaiton_flag" 
+        ngModel>
+    </spinx-radio> 
+        
+    <spinx-textarea
+        rows="5"
+        placeholder="Enter Your Address .."
+        formControlName="address" 
+        id="address"
+        label="Address"
+        >
+    </spinx-textarea>
+
+
+    <spinx-singlefile
+    id="file-input-spinx"
+    name="file-input-spinx"
+    [selected_record_list]="totalfiles"
+    (change)="handleFileInput($event)"
+    label="User Profile"
+    formArrayName="user_profile_data"
+    [submit_validaiton_flag]="submit_validaiton_flag"
+    [image_valdaiton]="image_valdaiton"
+>
+    </spinx-singlefile>
+
+
+    <spinx-dropdown
+    id="country"
+    label="Country"
+    name="country"
+    [record_list]="country_list"
+    formControlName="country"
+    [required]="true"  
+    [submit_validaiton_flag]="submit_validaiton_flag"
+    (change)="onChange_country_selection($event.target.value)"
+>
+</spinx-dropdown>
 
     <spinx-multidropdown    
         label="Team"
@@ -189,6 +154,41 @@
         [submit_validaiton_flag]="submit_validaiton_flag"
     > 
     </spinx-multidropdown>
+
+    <spinx-date-picker  
+        placeholder="Enter The First Date"  
+        formControlName="dateofjoin" 
+        format="YYYY/MM/DD HH:mm:ss"
+    >
+    </spinx-date-picker> 
+
+   
+
+    <!-- <dp-date-picker formControlName="dateofjoin" [config]="datePickerConfig"></dp-date-picker> -->
+
+    <!-- <spinx-datepicker     
+    (change)="onChange_country_selection($event.target.value)"
+    formControlName="dateofjoin"
+    ngModel
+    >
+</spinx-datepicker> -->
+        
+<!-- <div class="form-group">
+	<div class="input-wrapper" [class.required]="required">
+    <label for="datepicker">Date Of Joining</label>
+
+    <input [owlDateTimeTrigger]="dt1" 
+            class="form-control" 
+            name="datepicker"
+            id="datepicker"
+            [owlDateTime]="dt1" 
+            placeholder="Enter ...."
+            formControlName="dateofjoin"
+            />
+    <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time> 
+      
+	  </div>
+  </div> -->
          
 
      <!-- <div class="form-group row">
@@ -229,6 +229,8 @@
 
     <!-- disabled="false" -->
 
+    <br/>
+    <br/>
 
     <spinx-button label="Add User" class_custom="btn btn-primary" id="submit_button" (onClick)="onSubmit()" ></spinx-button>     
       &nbsp;&nbsp;&nbsp;     
