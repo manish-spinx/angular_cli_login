@@ -5,13 +5,15 @@ export class User{
     password:string;
     company_name:string;
     edu_list:any;    
-    user_profile:any;
+    //user_profile:any;
     mobile: number;
     gender:string;
     address:string;
     country:string;
     team:any;
     dateofjoin: string;
+    user_profile:any;
+    user_profile_string:string;
 
     // constructor(userResponse:any)
     // {

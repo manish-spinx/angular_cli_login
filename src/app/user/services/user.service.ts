@@ -12,12 +12,20 @@ import { User } from '../model/user';
 
 @Injectable()
 export class UserService {
+
+    api_name = 'http://localhost:3005/admin_api/';
     constructor(private http: HttpClient,private customHttp: CustomHttp) { }
 
-    user_post(user: User)
+    user_post(user)
     {
           console.log(' Now user service api calling..');
-          console.log(user);
+          //console.log(user);
+          //post_image
+          return this.customHttp.post_image(this.api_name+'add_user_angular', user,'jpg')
+            .map(resp => {
+                return resp;
+            })
+
     }
     
 

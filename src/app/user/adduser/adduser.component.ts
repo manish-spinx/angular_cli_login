@@ -173,31 +173,53 @@ export class AdduserComponent implements OnInit {
      alert('Need to Redirect Listing Page !');
   }
 
-  onSubmit()
+  async onSubmit()
   {
       this.isSubmitted = true;
       
     if(this.registerForm.valid && this.eduFormArray.length>0 && this.team_dataFormArray.length>0 && this.totalfiles.length>0) 
     {
            
-        this.user_model.name = this.registerForm.value.name;
-        this.user_model.email = this.registerForm.value.email;
-        this.user_model.password = this.registerForm.value.password;
-        this.user_model.company_name = this.registerForm.value.company;
-        this.user_model.mobile = this.registerForm.value.mobile;
-        this.user_model.gender = this.registerForm.value.gender;
-        this.user_model.address = this.registerForm.value.address;
-        this.user_model.country = this.registerForm.value.country;
-        this.user_model.dateofjoin = this.registerForm.value.dateofjoin;
-        this.user_model.edu_list = this.eduFormArray;
-        this.user_model.user_profile = this.totalfiles;
-        this.user_model.team = this.team_dataFormArray;
+        // this.user_model.name = this.registerForm.value.name;
+        // this.user_model.email = this.registerForm.value.email;
+        // this.user_model.password = this.registerForm.value.password;
+        // this.user_model.company_name = this.registerForm.value.company;
+        // this.user_model.mobile = this.registerForm.value.mobile;
+        // this.user_model.gender = this.registerForm.value.gender;
+        // this.user_model.address = this.registerForm.value.address;
+        // this.user_model.country = this.registerForm.value.country;
+        // this.user_model.dateofjoin = this.registerForm.value.dateofjoin;
 
+        //  this.user_model.edu_list = this.eduFormArray;        
+        // this.user_model.team = this.team_dataFormArray;
+        // this.user_model.user_profile = JSON.stringify(this.totalfiles[0]);
 
-        console.log('-----------------chk user data------>');
-        console.log(this.user_model);       
-        
-        //this._uservice.user_post(this.user_model);
+        let main_form: FormData = new FormData();
+        main_form.append('name',this.registerForm.value.name);
+        main_form.append('email',this.registerForm.value.email);
+        main_form.append('password',this.registerForm.value.password);
+        main_form.append('company_name',this.registerForm.value.company_name);
+        main_form.append('mobile',this.registerForm.value.mobile);
+        main_form.append('gender',this.registerForm.value.gender);
+        main_form.append('address',this.registerForm.value.address);
+        main_form.append('country',this.registerForm.value.country);
+        main_form.append('dateofjoin',this.registerForm.value.dateofjoin);
+
+        main_form.append('edu_list',JSON.stringify(this.eduFormArray));
+        main_form.append('user_profile',this.totalfiles[0]);
+        main_form.append('team',JSON.stringify(this.team_dataFormArray));
+
+        await this._uservice.user_post(main_form)
+        .subscribe(
+          response => {
+              
+               console.log('-------user----model----------');
+               console.log(response);
+                           
+          }, err => {
+              
+          });
+
     }
     else{
 
