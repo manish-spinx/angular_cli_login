@@ -11,6 +11,8 @@ import { CoreModule } from '../core/core.module';
 // component
 import { ProfileComponent } from './profile/profile.component';
 import { AdduserComponent } from './adduser/adduser.component';
+import { EdituserComponent } from './edituser/edituser.component';
+
 
 //service
 import { UserService } from './services/user.service';
@@ -21,10 +23,12 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {DpDatePickerModule} from 'ng2-date-picker';
 
 
+
 @NgModule({
   declarations: [
     ProfileComponent, 
     AdduserComponent,
+    EdituserComponent
   ],
   imports: [
     CommonModule,
