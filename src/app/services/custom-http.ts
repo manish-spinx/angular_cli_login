@@ -50,7 +50,7 @@ export class CustomHttp {
         if (token) {
             this.httpOptions = {
                 headers: new HttpHeaders({ 'access_token': token}),
-                'responseType':'blob',
+                'responseType':'json',
                 'Content-Type': 'image/'+image_ext              
             };
 

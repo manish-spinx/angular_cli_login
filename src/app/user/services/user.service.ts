@@ -18,10 +18,15 @@ export class UserService {
 
     user_post(user)
     {
-          console.log(' Now user service api calling..');
-          
           //post_image
+          return this.customHttp.post_image(this.api_name+'add_user_angular', user,'jpg')
+            .map(resp => {
+                return resp;
+            })
+    }
 
+    user_post_service(user:User)
+    {
           return this.customHttp.post_image(this.api_name+'add_user_angular', user,'jpg')
             .map(resp => {
                 return resp;

@@ -212,10 +212,14 @@ export class AdduserComponent implements OnInit {
         await this._uservice.user_post(main_form)
         .subscribe(
           response => {
-              
-               console.log('-------user----model----------');
-               console.log(response);
-                           
+
+                //console.log('---------- > user response ---- >');
+                //console.log(response);
+
+                 if(response['status']===1)
+                  {
+                       alert(response['message']);
+                  }      
           }, err => {
               
           });
