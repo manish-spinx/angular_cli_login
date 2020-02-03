@@ -16,7 +16,17 @@ export class UserService {
     api_name = 'http://localhost:3005/admin_api/';
     constructor(private http: HttpClient,private customHttp: CustomHttp) { }
 
-    user_post(user)
+
+    user_post(api_slug,data)
+    {
+          //post data
+          return this.customHttp.post(this.api_name+api_slug,data)
+            .map(resp => {
+                return resp;
+            })
+    }
+
+    user_post_image(user)
     {
           //post_image
           return this.customHttp.post_image(this.api_name+'add_user_angular', user,'jpg')

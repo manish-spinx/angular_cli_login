@@ -209,7 +209,7 @@ export class AdduserComponent implements OnInit {
         main_form.append('user_profile',this.totalfiles[0]);
         main_form.append('team',JSON.stringify(this.team_dataFormArray));
 
-        await this._uservice.user_post(main_form)
+        await this._uservice.user_post_image(main_form)
         .subscribe(
           response => {
 
@@ -237,10 +237,6 @@ export class AdduserComponent implements OnInit {
 
   }
 
-  // get_data(value)
-  // {
-  //   console.log('aa' +value);
-  // }
 
 
 }
