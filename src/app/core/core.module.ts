@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
-import {MatInputModule,MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModule,  } from '@angular/material';
 
 // Date Picker Component
 //import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -25,10 +25,7 @@ import { SinglefileComponent } from './controls/singlefile/singlefile.component'
 //import { DatepickerComponent } from './controls/datepicker/datepicker.component';
 
 import { DatePickerComponent } from './controls/date-picker/date-picker.component';
-
-
-
-
+import { DatePickerNewComponent } from './controls/datepickernew/datepickernew.component';
 
 
 
@@ -46,6 +43,8 @@ import { DatePickerComponent } from './controls/date-picker/date-picker.componen
     SinglefileComponent,
     //DatepickerComponent,
     DatePickerComponent,
+    DatePickerNewComponent,
+    
   ],
   imports: [
   BrowserModule,
@@ -58,7 +57,7 @@ import { DatePickerComponent } from './controls/date-picker/date-picker.componen
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    
+    MatFormFieldModule,    
   ],
   exports: [
     PasswordComponent,
@@ -73,6 +72,7 @@ import { DatePickerComponent } from './controls/date-picker/date-picker.componen
     SinglefileComponent,
     //DatepickerComponent,
     DatePickerComponent,
+    DatePickerNewComponent
     
   ],
 })

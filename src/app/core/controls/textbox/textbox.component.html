@@ -1,6 +1,16 @@
 <div class="form-group">
     <label [for]="id">{{ label }}</label>
-    <input type="text" #control class="form-control" [id]="id" [name]="name" [(ngModel)]="model" (ngModelChange)="modelChange.emit($event)" [maxlength]="maxlength" [placeholder]="placeholder" ngControl="model" />
+    <input 
+    type="text" 
+    #control 
+    class="form-control" 
+    [id]="id" 
+    [name]="name" 
+    [(ngModel)]="model" 
+    (ngModelChange)="modelChange.emit($event)" 
+    [maxlength]="maxlength" 
+    [placeholder]="placeholder" 
+    ngControl="model" />
 
        
         <!-- <div class="alert alert-danger" *ngIf="manish_address.controls.name.errors">

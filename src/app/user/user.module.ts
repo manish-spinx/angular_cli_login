@@ -21,6 +21,9 @@ import { UserService } from './services/user.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import {DpDatePickerModule} from 'ng2-date-picker';
+import { NgDatepickerModule } from 'ng2-datepicker';
+
+import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModule,  } from '@angular/material';
 
 
 
@@ -38,7 +41,12 @@ import {DpDatePickerModule} from 'ng2-date-picker';
     CoreModule,
     OwlDateTimeModule,
    OwlNativeDateTimeModule,
-   DpDatePickerModule
+   DpDatePickerModule,
+   NgDatepickerModule,
+   MatInputModule,
+   MatDatepickerModule,
+   MatNativeDateModule,
+   MatFormFieldModule,
 
   ],
   providers: [

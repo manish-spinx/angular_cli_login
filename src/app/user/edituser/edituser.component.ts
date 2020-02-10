@@ -14,6 +14,7 @@ import { SpinxValidMatch } from 'src/app/_helpers/spinx-valid-match.validator';
 import { SpinxValidNumeric } from 'src/app/_helpers/spinx-valid-numeric.validator';
 import { SpinxValidAlphabet } from 'src/app/_helpers/spinx-valid-alphabet.validator';
 
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-edituser',
@@ -35,6 +36,7 @@ export class EdituserComponent implements OnInit {
     image_valdaiton:boolean = false;
     public totalfiles: Array<File> =[];
     public totalfiles_name:any;
+    temp_date = '2019-10-20';
 
     public genders = [
         { id:'1',value: 'F', display: 'Female'},
@@ -88,7 +90,8 @@ export class EdituserComponent implements OnInit {
             edu_data:[],
             team_data:[],
             user_profile_data:[],
-            dateofjoin:[],
+            dateofjoin:'',
+            //dateofjoin2:'',
             email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
           },{
               validator: [
@@ -112,10 +115,12 @@ export class EdituserComponent implements OnInit {
                 // profile_image_link: "http://localhost:3005/uploads/user/1579152749098_SYZe9l0h06K1eCKQBYwwUxz4p.jpg"
                 // dateofjoin: "2020/01/23 00:00:00"
                 
-                
-
                 console.log('-----------aa----------');
                 console.log(response['data']['dateofjoin']);
+
+                console.log('-----chk----date---default--');
+                console.log(new Date());
+                
 
                 if(response['status']==="1")
                 {
@@ -123,7 +128,8 @@ export class EdituserComponent implements OnInit {
                         email: response['data']['email'],
                         name: response['data']['name'],
                         mobile: response['data']['mobile'],
-                        dateofjoin: response['data']['dateofjoin'],
+                        dateofjoin: new Date(response['data']['dateofjoin']),
+                        //dateofjoin2: new Date(response['data']['dateofjoin']),
                         address: response['data']['address'],
                         company: response['data']['company_name'],
                         gender: response['data']['gender'],
