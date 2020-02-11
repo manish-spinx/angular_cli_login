@@ -26,7 +26,6 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModule,  } from '@angular/material';
 
 
-
 @NgModule({
   declarations: [
     ProfileComponent, 
@@ -47,7 +46,6 @@ import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModu
    MatDatepickerModule,
    MatNativeDateModule,
    MatFormFieldModule,
-
   ],
   providers: [
     UserService

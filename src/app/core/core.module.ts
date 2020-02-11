@@ -26,6 +26,7 @@ import { SinglefileComponent } from './controls/singlefile/singlefile.component'
 
 import { DatePickerComponent } from './controls/date-picker/date-picker.component';
 import { DatePickerNewComponent } from './controls/datepickernew/datepickernew.component';
+import { ModalModule } from '../_modal';
 
 
 
@@ -58,6 +59,7 @@ import { DatePickerNewComponent } from './controls/datepickernew/datepickernew.c
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,    
+    ModalModule,
   ],
   exports: [
     PasswordComponent,
