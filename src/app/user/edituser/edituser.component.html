@@ -3,19 +3,14 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
     <div class="container">
 
-    <app-custom-textbox
-        name="name"
-        id="name"
-        type="text"
-		label="User Name"
-		placeholder="Please enter your user name"
-        minlength="10"
-        maxlength="15"
-        [required]="true"
-        formControlName="name"
-        [submit_validaiton_flag]="submit_validaiton_flag"  
-	    ngModel>
-    </app-custom-textbox>
+        <ckeditor 
+        name="myckeditor"
+        required
+        [config]="ckeConfig" 
+        debounce="500" 
+        (paste)="onPaste_ckeditor($event)"
+        (change)="onChange_ckeditor($event)">
+        </ckeditor>
 
       
     <app-custom-textbox

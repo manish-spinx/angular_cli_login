@@ -22,12 +22,18 @@ import { ButtonComponent } from './controls/button/button.component';
 import { checkboxComponent } from './controls/checkbox/checkbox.component';
 import { MultidropdownComponent } from './controls/multidropdown/multidropdown.component';
 import { SinglefileComponent } from './controls/singlefile/singlefile.component';
+import { CkeditorComponent } from './controls/ckeditor/ckeditor.component';
+
+
+
 //import { DatepickerComponent } from './controls/datepicker/datepicker.component';
 
 import { DatePickerComponent } from './controls/date-picker/date-picker.component';
 import { DatePickerNewComponent } from './controls/datepickernew/datepickernew.component';
 import { ModalModule } from '../_modal';
 
+// ckedior module 
+import { CKEditorModule } from 'ng2-ckeditor';
 
 
 @NgModule({
@@ -45,7 +51,7 @@ import { ModalModule } from '../_modal';
     //DatepickerComponent,
     DatePickerComponent,
     DatePickerNewComponent,
-    
+    CkeditorComponent,
   ],
   imports: [
   BrowserModule,
@@ -60,6 +66,7 @@ import { ModalModule } from '../_modal';
     MatNativeDateModule,
     MatFormFieldModule,    
     ModalModule,
+    CKEditorModule,
   ],
   exports: [
     PasswordComponent,
@@ -74,7 +81,8 @@ import { ModalModule } from '../_modal';
     SinglefileComponent,
     //DatepickerComponent,
     DatePickerComponent,
-    DatePickerNewComponent
+    DatePickerNewComponent,
+    CkeditorComponent
     
   ],
 })

@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { Router,ActivatedRoute  } from '@angular/router';
-
 // user service
 import { UserService } from '../services/user.service';
-
 // model
 import { User } from '../model/user';
-
 // validaition helper
 import { SpinxValidMatch } from 'src/app/_helpers/spinx-valid-match.validator';
 import { SpinxValidNumeric } from 'src/app/_helpers/spinx-valid-numeric.validator';
 import { SpinxValidAlphabet } from 'src/app/_helpers/spinx-valid-alphabet.validator';
-
 import * as moment from 'moment';
+
 
 @Component({
     selector: 'app-edituser',
@@ -37,6 +34,14 @@ export class EdituserComponent implements OnInit {
     public totalfiles: Array<File> =[];
     public totalfiles_name:any;
     public edit_from_profile_link:any;
+
+    name = 'ng2-ckeditor';
+    ckeConfig: any;
+    mycontent: string;
+    log: string = '';
+    //@ViewChild("myckeditor") ckeditor: any;
+
+
 
   public genders = [
       { id:'1',value: 'F', display: 'Female'},
@@ -81,6 +86,9 @@ niceBytes(x){
       private router: Router,
       private route: ActivatedRoute,
       ) {
+
+        this.mycontent = `<p>My html content</p>`;
+
         this.registerForm = fb.group({
             mobile:["", Validators.required],
             company:["", Validators.required],      
@@ -104,6 +112,12 @@ niceBytes(x){
      }
 
     async ngOnInit() { 
+
+      this.ckeConfig = {
+        allowedContent: false,
+        extraPlugins: 'divarea',
+        forcePasteAsPlainText: true
+      };
 
         await this._uservice.user_post('edit_user_angular',{user_id:this.route.snapshot.params.id})
         .subscribe(
@@ -201,6 +215,18 @@ onSubmit()
 
 }
 
+onPaste_ckeditor(event)
+{
+   console.log('-------check----this-------onpaste---event-----');
+   console.log(event);
+
+}
+
+onChange_ckeditor(event)
+{
+  console.log('-------check----this-------onChange---event-----');
+  console.log(event);
+}
 
 
 

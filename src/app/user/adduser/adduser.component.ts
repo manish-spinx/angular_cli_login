@@ -34,6 +34,11 @@ export class AdduserComponent implements OnInit {
   image_valdaiton:boolean = false;
   public totalfiles: Array<File> =[];
   public totalfiles_name:any;
+
+  name = 'ng2-ckeditor';
+  ckeConfig: any;
+  mycontent: string;
+  log: string = '';
   
   public genders = [
     { id:'1',value: 'F', display: 'Female'},
@@ -94,6 +99,7 @@ export class AdduserComponent implements OnInit {
       user_profile_data:[],
       dateofjoin:[],
       dateofjoin2:[null],
+      ckeditor_info:[],
       email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
     },{
         validator: [
@@ -107,6 +113,11 @@ export class AdduserComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.ckeConfig = {
+      allowedContent: false,
+      extraPlugins: 'divarea',
+      forcePasteAsPlainText: true
+    };
   }
 
 
@@ -176,6 +187,9 @@ export class AdduserComponent implements OnInit {
   async onSubmit()
   {
       this.isSubmitted = true;
+
+      //console.log('-----submit-------event-----');
+      //console.log(this.registerForm.value.ckeditor_info);      
       
     if(this.registerForm.valid && this.eduFormArray.length>0 && this.team_dataFormArray.length>0 && this.totalfiles.length>0) 
     {
@@ -204,11 +218,11 @@ export class AdduserComponent implements OnInit {
         main_form.append('address',this.registerForm.value.address);
         main_form.append('country',this.registerForm.value.country);
         main_form.append('dateofjoin',this.registerForm.value.dateofjoin);
-
         main_form.append('edu_list',JSON.stringify(this.eduFormArray));
         main_form.append('user_profile',this.totalfiles[0]);
         main_form.append('team',JSON.stringify(this.team_dataFormArray));
-
+        main_form.append('ckeditor_info',this.registerForm.value.ckeditor_info);
+        
         await this._uservice.user_post_image(main_form)
         .subscribe(
           response => {
@@ -236,6 +250,19 @@ export class AdduserComponent implements OnInit {
 
 
   }
+
+onPaste_ckeditor(event)
+{
+  console.log('-------check----this-------onpaste---event-----');
+  console.log(event);
+
+}
+
+onChange_ckeditor(event)
+{
+  console.log('-------check----this-------onChange---event-----');
+  console.log(event);
+}
 
 
 

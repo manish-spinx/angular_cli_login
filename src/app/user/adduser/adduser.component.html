@@ -3,6 +3,26 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
     <div class="container">
 
+
+        <!-- <ckeditor 
+            formControlName="ckeditor_info"
+            name="myckeditor"
+            required
+            [config]="ckeConfig" 
+            debounce="500" 
+            (paste)="onPaste_ckeditor($event)"
+            (change)="onChange_ckeditor($event)">
+        </ckeditor> -->
+
+        <spinx-ckeditor
+        formControlName="ckeditor_info"
+        label="Ck Editor Information"
+        id="ckediotr1"
+        name="ckediotr1"
+        >
+        </spinx-ckeditor>
+
+
     <app-custom-textbox
         name="name"
         id="name"

@@ -25,6 +25,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 
 import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModule,  } from '@angular/material';
 
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModu
    MatDatepickerModule,
    MatNativeDateModule,
    MatFormFieldModule,
+   CKEditorModule,
   ],
   providers: [
     UserService
