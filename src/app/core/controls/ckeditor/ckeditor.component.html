@@ -1,23 +1,15 @@
 <div class="form-group">
 	<div class="input-wrapper">
     <label [for]="id">{{ label }}</label>
-	<!-- <input 
-		[type]="type" 
-		(submit_validaiton_flag)="submit_validaiton_flag"
-		class="form-control"
-		[id]="id"
-		[pattern]="pattern"
-		[required]="required"
-		[disabled]="disabled"
-		[minlength]="minlength"
-		[maxlength]="maxlength"		
-		[placeholder]="placeholder"
-		[(ngModel)]="data"
-		[ngModelOptions]="{standalone: true}"
-		(input)="onChange()"
-		(change)="onChange()"
-        (blur)="onTouchedFn()"/> -->
-
+		 <!-- <ckeditor 
+            formControlName="ckeditor_info"
+            name="myckeditor"
+            required
+            [config]="ckeConfig" 
+            debounce="500" 
+            (paste)="onPaste_ckeditor($event)"
+            (change)="onChange_ckeditor($event)">
+        </ckeditor> -->
         <ckeditor 
             [name]="name"
             [id]="id"
@@ -30,9 +22,5 @@
             (blur)="onTouchedFn()"
             >
         </ckeditor>
-        
-
-
-      
 	  </div>
   </div>

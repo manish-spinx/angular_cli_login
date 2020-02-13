@@ -13,17 +13,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { EdituserComponent } from './edituser/edituser.component';
 
-
 //service
 import { UserService } from './services/user.service';
-
 // Date Picker
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { NgDatepickerModule } from 'ng2-datepicker';
 
-import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModule,  } from '@angular/material';
+import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModule} from '@angular/material';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 

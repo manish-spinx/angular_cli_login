@@ -26,10 +26,19 @@ export class UserService {
             })
     }
 
-    user_post_image(user)
+    user_post_image(type,user)
     {
+        let api_slug_name = '';
+          if(type==='add')
+          {
+            api_slug_name = 'add_user_angular';   
+          }
+          else{
+            api_slug_name = 'update_user_angular';   
+          }
+
           //post_image
-          return this.customHttp.post_image(this.api_name+'add_user_angular', user,'jpg')
+          return this.customHttp.post_image(this.api_name+api_slug_name, user,'jpg')
             .map(resp => {
                 return resp;
             })

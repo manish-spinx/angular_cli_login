@@ -35,10 +35,10 @@ export class AdduserComponent implements OnInit {
   public totalfiles: Array<File> =[];
   public totalfiles_name:any;
 
-  name = 'ng2-ckeditor';
-  ckeConfig: any;
-  mycontent: string;
-  log: string = '';
+  // name = 'ng2-ckeditor';
+  // ckeConfig: any;
+  // mycontent: string;
+  // log: string = '';
   
   public genders = [
     { id:'1',value: 'F', display: 'Female'},
@@ -113,11 +113,11 @@ export class AdduserComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.ckeConfig = {
-      allowedContent: false,
-      extraPlugins: 'divarea',
-      forcePasteAsPlainText: true
-    };
+    // this.ckeConfig = {
+    //   allowedContent: false,
+    //   extraPlugins: 'divarea',
+    //   forcePasteAsPlainText: true
+    // };
   }
 
 
@@ -131,7 +131,6 @@ export class AdduserComponent implements OnInit {
       var allow_file_types = ['png','jpeg','pdf','jpg'];      
       var ext = file.name.substring(file.name.lastIndexOf('.') + 1);
       //console.log('chk file size : --> ',this.niceBytes(file.size)); 
-
       
         if(!allow_file_types.includes(ext))
         {
@@ -169,7 +168,7 @@ export class AdduserComponent implements OnInit {
   {
         if(e.target.checked)
         {
-          this.eduFormArray.push(e.target.id);
+            this.eduFormArray.push(e.target.id);
         }
         else{
           let index = this.eduFormArray.indexOf(e.target.id);
@@ -223,13 +222,9 @@ export class AdduserComponent implements OnInit {
         main_form.append('team',JSON.stringify(this.team_dataFormArray));
         main_form.append('ckeditor_info',this.registerForm.value.ckeditor_info);
         
-        await this._uservice.user_post_image(main_form)
+        await this._uservice.user_post_image('add',main_form)
         .subscribe(
           response => {
-
-                //console.log('---------- > user response ---- >');
-                //console.log(response);
-
                  if(response['status']===1)
                   {
                        alert(response['message']);
@@ -251,18 +246,18 @@ export class AdduserComponent implements OnInit {
 
   }
 
-onPaste_ckeditor(event)
-{
-  console.log('-------check----this-------onpaste---event-----');
-  console.log(event);
+// onPaste_ckeditor(event)
+// {
+//   console.log('-------check----this-------onpaste---event-----');
+//   console.log(event);
 
-}
+// }
 
-onChange_ckeditor(event)
-{
-  console.log('-------check----this-------onChange---event-----');
-  console.log(event);
-}
+// onChange_ckeditor(event)
+// {
+//   console.log('-------check----this-------onChange---event-----');
+//   console.log(event);
+// }
 
 
 

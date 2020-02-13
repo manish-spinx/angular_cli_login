@@ -34,13 +34,7 @@ export class EdituserComponent implements OnInit {
     public totalfiles: Array<File> =[];
     public totalfiles_name:any;
     public edit_from_profile_link:any;
-
-    name = 'ng2-ckeditor';
-    ckeConfig: any;
-    mycontent: string;
-    log: string = '';
-    //@ViewChild("myckeditor") ckeditor: any;
-
+    existing_image:any;
 
 
   public genders = [
@@ -87,8 +81,6 @@ niceBytes(x){
       private route: ActivatedRoute,
       ) {
 
-        this.mycontent = `<p>My html content</p>`;
-
         this.registerForm = fb.group({
             mobile:["", Validators.required],
             company:["", Validators.required],      
@@ -101,6 +93,7 @@ niceBytes(x){
             team_data:[],
             user_profile_data:[],
             dateofjoin:'',
+            ckeditor_info:'',
             email:([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
           },{
               validator: [
@@ -111,14 +104,7 @@ niceBytes(x){
           });
      }
 
-    async ngOnInit() { 
-
-      this.ckeConfig = {
-        allowedContent: false,
-        extraPlugins: 'divarea',
-        forcePasteAsPlainText: true
-      };
-
+async ngOnInit() { 
         await this._uservice.user_post('edit_user_angular',{user_id:this.route.snapshot.params.id})
         .subscribe(
           response => {
@@ -143,12 +129,15 @@ niceBytes(x){
                         gender: response['data']['gender'],
                         country: response['data']['country'],
                         team_data:response['data']['team'],
-                        edu_data:response['data']['edu_list']
+                        edu_data:response['data']['edu_list'],
+                        ckeditor_info:response['data']['ckeditor_info'],
                       });   
                       
                     this.edit_from_profile_link = response['data']['profile_image_link'];
+                    this.existing_image = response['data']['profile_image'];
 
                      // Education List
+                     this.eduFormArray = response['data']['edu_list'];
                      this.education_list = this.education_list.map(function(val){ 
                       if(response['data']['edu_list'].indexOf(val.id) !== -1)
                       {
@@ -160,6 +149,7 @@ niceBytes(x){
                     }) 
 
                     // Team List
+                    this.team_dataFormArray = response['data']['team'];
                     this.team_list = this.team_list.map(function(val){ 
                       if(response['data']['team'].indexOf(val.id) !== -1)
                       {
@@ -182,12 +172,42 @@ niceBytes(x){
               
           });
 
+}
 
-    }
+get_checkbox_value(e:any)
+{
+      if(e.target.checked)
+      {
+          this.eduFormArray.push(e.target.id);
+      }
+      else
+      {
+        let index = this.eduFormArray.indexOf(e.target.id);
+        if (index !== -1) 
+        {
+            this.eduFormArray.splice(index, 1);
+        }
+      }
+}
 
 handleFileInput(e:any)
 {
+    if(e.target.files)
+    {
+      const file: File = e.target.files[0];
+      var allow_file_types = ['png','jpeg','pdf','jpg'];      
+      var ext = file.name.substring(file.name.lastIndexOf('.') + 1);    
+      
+        if(!allow_file_types.includes(ext))
+        {
+            this.image_valdaiton = true;           
+        }
+        else{
 
+            this.totalfiles = e.target.files;
+            this.image_valdaiton = false;           
+        }
+    }
 }
 
 onChange_country_selection(index:any)
@@ -197,35 +217,77 @@ onChange_country_selection(index:any)
 
 onChange_team_selection(e:any)
 {
+  var options = e.target.options;
+  this.team_dataFormArray = [];
+  for (var i = 0, l = options.length; i < l; i++) 
+  {
+    if (options[i].selected) {
+      this.team_dataFormArray.push(options[i].value);
+    }
+  }
 
 }
 
-get_checkbox_value(e:any)
-{
+addEvent(type,event)
+{  
+    if(type==='change') 
+    {
+        this.registerForm.value.dateofjoin = event.target.value;
+    }   
     
 }
+
 
 onCancel()
 {
     
 }
 
-onSubmit()
+async onSubmit()
 {
+    console.log('-------chk---------onSubmit-----');
+    console.log(this.registerForm.value);
 
-}
+    this.isSubmitted = true;
+    if(this.registerForm.valid && this.eduFormArray.length>0 && this.team_dataFormArray.length>0) 
+    {
 
-onPaste_ckeditor(event)
-{
-   console.log('-------check----this-------onpaste---event-----');
-   console.log(event);
+      let main_form: FormData = new FormData();
+        main_form.append('name',this.registerForm.value.name);
+        main_form.append('email',this.registerForm.value.email);
+        main_form.append('company_name',this.registerForm.value.company);
+        main_form.append('mobile',this.registerForm.value.mobile);
+        main_form.append('gender',this.registerForm.value.gender);
+        main_form.append('address',this.registerForm.value.address);
+        main_form.append('country',this.registerForm.value.country);
+        main_form.append('dateofjoin',this.registerForm.value.dateofjoin);
+        main_form.append('edu_list',JSON.stringify(this.eduFormArray));        
+        main_form.append('team',JSON.stringify(this.team_dataFormArray));
+        main_form.append('ckeditor_info',this.registerForm.value.ckeditor_info);
+        main_form.append('user_profile',this.totalfiles[0]);
+        main_form.append('user_id',this.route.snapshot.params.id);
+        main_form.append('existing_image',this.existing_image);
 
-}
 
-onChange_ckeditor(event)
-{
-  console.log('-------check----this-------onChange---event-----');
-  console.log(event);
+        await this._uservice.user_post_image('update',main_form)
+        .subscribe(
+          response => {
+                 if(response['status']===1)
+                  {
+                       alert(response['message']);
+                  }      
+          }, err => {
+              
+          });
+
+    }
+    else{
+        console.log('form validaiton no......');
+        this.isSubmitted = false;
+        this.submit_validaiton_flag=true;
+        return;
+    }
+
 }
 
 

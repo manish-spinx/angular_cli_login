@@ -1,8 +1,8 @@
 <h1>Edit User</h1>
 <!-- #form="ngForm" -->
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #form="ngForm">  
+<form [formGroup]="registerForm" #form="ngForm">  
     <div class="container">
-
+<!-- 
         <ckeditor 
         name="myckeditor"
         required
@@ -10,8 +10,28 @@
         debounce="500" 
         (paste)="onPaste_ckeditor($event)"
         (change)="onChange_ckeditor($event)">
-        </ckeditor>
+        </ckeditor> -->
 
+        <spinx-ckeditor
+        formControlName="ckeditor_info"
+        label="Ck Editor Information"
+        id="ckediotr1"
+        name="ckediotr1">
+    </spinx-ckeditor>
+
+    <app-custom-textbox
+        name="name"
+        id="name"
+        type="text"
+		label="User Name"
+		placeholder="Please enter your user name"
+        minlength="10"
+        maxlength="15"
+        [required]="true"
+        formControlName="name"
+        [submit_validaiton_flag]="submit_validaiton_flag"  
+	    ngModel>
+    </app-custom-textbox>
       
     <app-custom-textbox
         name="email"
@@ -123,23 +143,7 @@
     > 
     </spinx-multidropdown>
 
-    <!-- <spinx-textarea
-    rows="5"
-    placeholder="Enter Your Address .."
-    formControlName="address" 
-    id="address"
-    label="Address"
-    >
-</spinx-textarea> -->
 
-<!-- <spinx-textarea
-        rows="5"
-        placeholder="Enter Your Address .."
-        formControlName="address" 
-        id="address"
-        label="Address"
-        >
-    </spinx-textarea> -->
 
        <!-- <spinx-date-picker  
         placeholder="Enter The First Date"  
@@ -150,7 +154,7 @@
     >
     </spinx-date-picker>    -->
 
-     <app-custom-datepicker
+      <!-- <app-custom-datepicker
         name="dateofjoin"
         id="dateofjoin"
 		label="date picker testing"
@@ -158,14 +162,14 @@
         formControlName="dateofjoin"
         [submit_validaiton_flag]="submit_validaiton_flag"
 	    ngModel>
-    </app-custom-datepicker> 
+    </app-custom-datepicker>  -->
 
-       <!-- <mat-form-field>
-        <input matInput formControlName="dateofjoin" [matDatepicker]="picker" [placeholder]="placeholder"
+        <mat-form-field>
+        <input matInput id="dateofjoin" formControlName="dateofjoin" [matDatepicker]="picker" [placeholder]="placeholder"
                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>    -->
+      </mat-form-field>     
 
 
     <!-- <ng-datepicker formControlName="dateofjoin" format="YYYY/MM/DD HH:mm:ss"></ng-datepicker> -->
