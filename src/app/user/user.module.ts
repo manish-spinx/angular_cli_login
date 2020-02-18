@@ -12,9 +12,12 @@ import { CoreModule } from '../core/core.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { EdituserComponent } from './edituser/edituser.component';
+import { ListUserComponent } from './listuser/listuser.component';
+
 
 //service
 import { UserService } from './services/user.service';
+
 // Date Picker
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
@@ -25,11 +28,23 @@ import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModu
 
 import { CKEditorModule } from 'ng2-ckeditor';
 
+// Data table with pagination dependency...
+import { DataTablesModule} from 'angular-datatables';
+import { PaginationModule } from 'ngx-bootstrap';
+
+import {
+  ToastrModule,
+  ToastNoAnimation,
+  ToastNoAnimationModule
+} from 'ngx-toastr';
+
+
 @NgModule({
   declarations: [
     ProfileComponent, 
     AdduserComponent,
-    EdituserComponent
+    EdituserComponent,
+    ListUserComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +61,13 @@ import { CKEditorModule } from 'ng2-ckeditor';
    MatNativeDateModule,
    MatFormFieldModule,
    CKEditorModule,
+   DataTablesModule,// datatable
+   PaginationModule.forRoot(),// pagination
+   ToastrModule.forRoot({
+    timeOut: 10000,
+    positionClass: 'toast-bottom-right',
+    preventDuplicates: true,
+  }),
   ],
   providers: [
     UserService

@@ -13,9 +13,8 @@ import { User } from '../model/user';
 @Injectable()
 export class UserService {
 
-    api_name = 'http://localhost:3005/admin_api/';
+    api_name = `${environment.api_name}`;
     constructor(private http: HttpClient,private customHttp: CustomHttp) { }
-
 
     user_post(api_slug,data)
     {
@@ -50,6 +49,16 @@ export class UserService {
             .map(resp => {
                 return resp;
             })
+    }
+
+    getUserData(offset: number = 0, limit: any = 10, sort: any = {}, filter: any = {})
+    {
+      const params = { 'offset': offset, 'limit': limit, 'filter': filter, 'sort': sort, type: 'list' };
+      let api_slug = 'list_users_angular';
+      return this.customHttp.post(this.api_name+api_slug, params)
+          .map((response: Response) => {
+              return response;
+          });
     }
     
 

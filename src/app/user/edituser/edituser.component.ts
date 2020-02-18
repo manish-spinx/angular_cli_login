@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-
 import { Router,ActivatedRoute  } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 // user service
 import { UserService } from '../services/user.service';
 // model
@@ -79,6 +79,7 @@ niceBytes(x){
       private _uservice:UserService,
       private router: Router,
       private route: ActivatedRoute,
+      private toastrService: ToastrService
       ) {
 
         this.registerForm = fb.group({
@@ -240,7 +241,7 @@ addEvent(type,event)
 
 onCancel()
 {
-    
+  this.router.navigate(['/user/listuser']);
 }
 
 async onSubmit()
@@ -274,7 +275,9 @@ async onSubmit()
           response => {
                  if(response['status']===1)
                   {
-                       alert(response['message']);
+                       //alert(response['message']);
+                       this.toastrService.success(response['message'],'User Management');
+                       this.router.navigate(['/user/listuser']);
                   }      
           }, err => {
               

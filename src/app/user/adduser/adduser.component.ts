@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 // validaition helper
 import { SpinxValidMatch } from 'src/app/_helpers/spinx-valid-match.validator';
@@ -82,6 +84,8 @@ export class AdduserComponent implements OnInit {
   constructor( 
                 private fb: FormBuilder,
                 private _uservice:UserService,
+                private router: Router,
+                private toastrService: ToastrService
               ) 
     {
     this.registerForm = fb.group({
@@ -113,11 +117,6 @@ export class AdduserComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.ckeConfig = {
-    //   allowedContent: false,
-    //   extraPlugins: 'divarea',
-    //   forcePasteAsPlainText: true
-    // };
   }
 
 
@@ -180,7 +179,7 @@ export class AdduserComponent implements OnInit {
 
   onCancel()
   {
-     alert('Need to Redirect Listing Page !');
+    this.router.navigate(['/user/listuser']);
   }
 
   async onSubmit()
@@ -227,7 +226,9 @@ export class AdduserComponent implements OnInit {
           response => {
                  if(response['status']===1)
                   {
-                       alert(response['message']);
+                       //alert(response['message']);
+                       this.toastrService.success(response['message'],'User Management');
+                       this.router.navigate(['/user/listuser']);
                   }      
           }, err => {
               
