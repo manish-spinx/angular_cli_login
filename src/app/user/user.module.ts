@@ -14,7 +14,6 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { ListUserComponent } from './listuser/listuser.component';
 
-
 //service
 import { UserService } from './services/user.service';
 
@@ -25,18 +24,13 @@ import {DpDatePickerModule} from 'ng2-date-picker';
 import { NgDatepickerModule } from 'ng2-datepicker';
 
 import {MatInputModule,MatDatepickerModule, MatNativeDateModule,MatFormFieldModule} from '@angular/material';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 
 // Data table with pagination dependency...
 import { DataTablesModule} from 'angular-datatables';
 import { PaginationModule } from 'ngx-bootstrap';
-
-import {
-  ToastrModule,
-  ToastNoAnimation,
-  ToastNoAnimationModule
-} from 'ngx-toastr';
 
 
 @NgModule({
@@ -63,11 +57,7 @@ import {
    CKEditorModule,
    DataTablesModule,// datatable
    PaginationModule.forRoot(),// pagination
-   ToastrModule.forRoot({
-    timeOut: 10000,
-    positionClass: 'toast-bottom-right',
-    preventDuplicates: true,
-  }),
+   MatSlideToggleModule
   ],
   providers: [
     UserService
