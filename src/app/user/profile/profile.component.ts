@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@ang
 
 import { GlobalapiService } from 'src/app/services/globalapi.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
+
 
 
 @Component({
@@ -33,12 +35,12 @@ export class ProfileComponent implements OnInit {
 
   async ngOnInit(){
 
-     let api_url = 'http://localhost:3005/admin_api/edit_user';
-
-     await this.globalapiService.past_data_to_server(api_url,{'user_id':localStorage.getItem("id")})
+     //let api_url = 'http://localhost:3005/admin_api/edit_user_angular';
+     let api_url = `${environment.api_name}`;
+     await this.globalapiService.past_data_to_server(api_url+'edit_user_angular',{'user_id':localStorage.getItem("id")})
      .subscribe(
       response => {
-          if(response['success']==1)
+          if(response['status']==1)
           {
             this.profileForm.patchValue({
               fullname: response['data']['name'],
@@ -64,7 +66,8 @@ export class ProfileComponent implements OnInit {
     this.isSubmitted = true;
     if(this.profileForm.valid) 
     {
-       let api_url = 'http://localhost:3005/front_api/front_update_profile';
+      //let api_url = 'http://localhost:3005/admin_api/angular_profile_update';
+      let api_url = `${environment.api_name}`;
 
        const reqParams = {      
         email: this.profileForm.value.email,
@@ -73,7 +76,7 @@ export class ProfileComponent implements OnInit {
         user_id:localStorage.getItem("id")
        };
 
-       await this.globalapiService.past_data_to_server(api_url,reqParams)
+       await this.globalapiService.past_data_to_server(api_url+'angular_profile_update',reqParams)
        .subscribe(
         response => {
             if(response['success']==1)

@@ -20,25 +20,13 @@ export class AuthenticationService {
         private router: Router,
         ) { }
 
-    async login_old(data_new)
-    {
-        await axios.post('https://projects.spinxweb.net/ncwm-spinx/api/admin/auth/login',data_new,
-        {
-            headers : {Accept: 'application/json','Content-Type': 'application/json'}
-          }).then((response) => 
-                {
-                    console.log('check----response');
-                    console.log(response);                                        
-                })
-
-    }
-
+    
     login(post_data) {
 
-           let api_url = 'http://localhost:3005/admin_api/login';
-           //let api_url = 'https://projects.spinxweb.net/ncwm-spinx/api/admin/auth/login';
+           //let api_url = 'http://localhost:3005/admin_api/login_angular';
+           let api_name = `${environment.api_name}`;
 
-        return this.http.post(api_url,post_data)
+        return this.http.post(api_name+'login_angular',post_data)
             .map(user => {
                 // login successful if there's a jwt token in the response
                 if (user) {                                       
@@ -46,7 +34,7 @@ export class AuthenticationService {
                     localStorage.setItem('access_token', user['data']['access_token']);
                     localStorage.setItem('userData', JSON.stringify(user['data']));
                    // this.loggedIn.next(true);
-                    //this.router.navigate(['/']);
+                    this.router.navigate(['/']);
 
                 }
                 return user;
